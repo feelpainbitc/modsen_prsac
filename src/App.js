@@ -1,5 +1,6 @@
 
-import './App.css';
+import s from './App.module.css';
+import { Autocomplete } from './components/Autocomplete/Autocomplete';
 import { Map } from './components/Map/Map';
 import { useJsApiLoader } from '@react-google-maps/api';
 
@@ -10,13 +11,20 @@ const defaultValueCenter={
   lng: 26.87096111598955
 };
 
+const libraries=['places']
+
 function App() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: API_KEY
+    googleMapsApiKey: API_KEY,
+    libraries
   })
   return (
-    <div className="App">
+    
+    <div>
+      <div className={s.addresSearchContainer}>
+        <Autocomplete isLoaded={isLoaded}/>
+      </div>
       {isLoaded ? <Map center={defaultValueCenter}/> : <h2>Loading...</h2>}
     </div>
   );

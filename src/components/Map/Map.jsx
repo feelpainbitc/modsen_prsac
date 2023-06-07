@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 
 import { GoogleMap } from '@react-google-maps/api'
 import s from './Map.module.css'
+import { defaultTheme } from './Theme';
 
 /**
 * @author
@@ -17,6 +18,21 @@ const containerStyle = {
     lat: -3.745,
     lng: -38.523
   };
+
+const defaultOptions={
+  panControl:true,
+  zoomControl:true,
+  mapTypeControl:false,
+  scaleControl:false,
+  streetViewControl:false,
+  rotateControl:false,
+  clickableIcons:true,
+  keyboardShortcuts:false,
+  scrollwheel:true,
+  disableDoubleClickZoom:true,
+  fullScreenControl:false,
+  styles:defaultTheme,
+} 
 
 export const Map = ({center}) => {
 
@@ -37,6 +53,7 @@ export const Map = ({center}) => {
         zoom={10}
         onLoad={onLoad}
         onUnmount={onUnmount}
+        options={defaultOptions}
       >
         { /* Child components, such as markers, info windows, etc. */ }
         <></>
