@@ -1,8 +1,8 @@
-.container{
+.root{
     position: relative;
     width: 100%;
 }
-.container *{
+.root *{
     box-sizing: border-box;
 }
 .findbar{

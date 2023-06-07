@@ -12,7 +12,7 @@ import usePlacesAutocomplete, {
 * @function Autocomplete
 **/
 
-export const Autocomplete = ({isLoaded}) => {
+export const Autocomplete = ({isLoaded,onSelect}) => {
     const {
         ready,
         value,
@@ -41,7 +41,8 @@ export const Autocomplete = ({isLoaded}) => {
           getGeocode({ address: description }).then((results) => {
             const { lat, lng } = getLatLng(results[0]);
             console.log("📍 Coordinates: ", { lat, lng });
-          }); 
+            onSelect({lat,lng})
+            }); 
          };
     
       const renderSuggestions = () =>
@@ -65,7 +66,7 @@ export const Autocomplete = ({isLoaded}) => {
         },[isLoaded,init])
 
   return(
-    <div classname={s.container} ref={ref}>
+    <div classname={s.root} ref={ref}>
         <input type='text'
          className={s.findbar}
          value={value}

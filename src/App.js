@@ -1,4 +1,5 @@
-
+import React, { useCallback } from 'react';
+import { useState } from 'react';
 import s from './App.module.css';
 import { Autocomplete } from './components/Autocomplete/Autocomplete';
 import { Map } from './components/Map/Map';
@@ -14,18 +15,27 @@ const defaultValueCenter={
 const libraries=['places']
 
 function App() {
+  const [center,setCenter]=React.useState(defaultValueCenter)
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: API_KEY,
     libraries
   })
+
+  const onPlaceSelect=React.useCallback(
+    (coordinates)=>{
+      setCenter(coordinates)
+    },
+    [],
+  )
+
   return (
     
     <div>
       <div className={s.addresSearchContainer}>
-        <Autocomplete isLoaded={isLoaded}/>
+        <Autocomplete isLoaded={isLoaded} onSelect={onPlaceSelect}/>
       </div>
-      {isLoaded ? <Map center={defaultValueCenter}/> : <h2>Loading...</h2>}
+      {isLoaded ? <Map center={center}/> : <h2>Loading...</h2>}
     </div>
   );
 }
