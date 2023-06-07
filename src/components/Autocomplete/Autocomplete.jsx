@@ -66,7 +66,7 @@ export const Autocomplete = ({isLoaded,onSelect}) => {
         },[isLoaded,init])
 
   return(
-    <div classname={s.root} ref={ref}>
+    <div className={s.root} ref={ref}>
         <input type='text'
          className={s.findbar}
          value={value}

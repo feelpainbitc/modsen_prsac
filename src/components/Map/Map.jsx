@@ -1,8 +1,9 @@
 import React, { useRef } from 'react'
 
-import { GoogleMap } from '@react-google-maps/api'
+import { GoogleMap, MarkerF} from '@react-google-maps/api'
 import s from './Map.module.css'
 import { defaultTheme } from './Theme';
+import { CurrentLocationMarker } from '../CurrentLocationMarker/CurrentLocationMarker';
 
 /**
 * @author
@@ -30,7 +31,7 @@ const defaultOptions={
   keyboardShortcuts:false,
   scrollwheel:true,
   disableDoubleClickZoom:true,
-  fullScreenControl:false,
+  fullscreenControl:false,
   styles:defaultTheme,
 } 
 
@@ -50,14 +51,17 @@ export const Map = ({center}) => {
         <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={10}
+        zoom={15}
         onLoad={onLoad}
         onUnmount={onUnmount}
         options={defaultOptions}
       >
-        { /* Child components, such as markers, info windows, etc. */ }
-        <></>
+            <MarkerF  
+            position={center}
+            />
       </GoogleMap>
+
+     
     </div>
    )
   }
