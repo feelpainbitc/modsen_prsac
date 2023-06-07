@@ -3,7 +3,6 @@ import React, { useRef } from 'react'
 import { GoogleMap, MarkerF} from '@react-google-maps/api'
 import s from './Map.module.css'
 import { defaultTheme } from './Theme';
-import { CurrentLocationMarker } from '../CurrentLocationMarker/CurrentLocationMarker';
 
 /**
 * @author
@@ -58,10 +57,9 @@ export const Map = ({center}) => {
       >
             <MarkerF  
             position={center}
+            label={{text:'You are here'}}
             />
       </GoogleMap>
-
-     
     </div>
    )
   }

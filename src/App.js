@@ -1,15 +1,16 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useState } from 'react';
 import s from './App.module.css';
 import { Autocomplete } from './components/Autocomplete/Autocomplete';
 import { Map } from './components/Map/Map';
 import { useJsApiLoader } from '@react-google-maps/api';
+import { getBrowserLocation } from './utils/geo';
 
 const API_KEY=process.env.REACT_APP_API_KEY
 
 const defaultValueCenter={
-  lat:54.30920403493205,
-  lng: 26.87096111598955
+  lat:51.507359,
+  lng: -0.136439
 };
 
 const libraries=['places']
@@ -28,7 +29,14 @@ function App() {
     },
     [],
   )
-
+    React.useEffect(()=>{
+      getBrowserLocation().then((curLoc)=>{
+        setCenter(curLoc)
+      })
+      .catch((defaultValueCenter)=>{
+        setCenter(defaultValueCenter)
+      });
+    },[])
   return (
     
     <div>
