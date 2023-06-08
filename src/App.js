@@ -50,7 +50,7 @@ function App() {
         <Autocomplete isLoaded={isLoaded} onSelect={onPlaceSelect}/>
         <button 
         className={s.btn}
-        onClick={()=>btnCurPosition}
+        onClick={()=>getBrowserLocation().then(currentLocation=>{setCenter(currentLocation)})}
         />
       </div>
       {isLoaded ? <Map center={center}/> : <h2>Loading...</h2>}
