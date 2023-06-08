@@ -1,7 +1,12 @@
 .root{
+    background-color: #FFF;
+    padding: 10px;
     position: relative;
     width: 100%;
+    display: flex;
+    border: 1px solid #1569c2;
 }
+
 .root *{
     box-sizing: border-box;
 }

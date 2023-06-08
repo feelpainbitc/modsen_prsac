@@ -6,6 +6,8 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
+
+  
 }
 @media (max-width: 320px) {
   .addresSearchContainer{
@@ -17,4 +19,18 @@
     transform: translateX(-50%);
     z-index: 10;
   }
+}
+.btn{
+  background: url('../public/assets/myposition.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width:50px;
+  height: 50px;
+  top: 90%;
+  left: 90%;
+  border: 0;
+  cursor: pointer;
+  margin-left: 10px;
+  overflow: visible;
+  position: relative;
 }

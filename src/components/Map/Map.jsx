@@ -1,8 +1,11 @@
 import React, { useRef } from 'react'
 
 import { GoogleMap, MarkerF} from '@react-google-maps/api'
-import s from './Map.module.css'
+import { useJsApiLoader } from '@react-google-maps/api';
+
 import { defaultTheme } from './Theme';
+import s from './Map.module.css'
+import { getBrowserLocation } from '../../utils/geo';
 
 /**
 * @author
@@ -21,7 +24,7 @@ const containerStyle = {
 
 const defaultOptions={
   panControl:true,
-  zoomControl:true,
+  zoomControl:false,
   mapTypeControl:false,
   scaleControl:false,
   streetViewControl:false,
@@ -45,6 +48,10 @@ export const Map = ({center}) => {
       const onUnmount = React.useCallback(function callback(map) {
         mapRef.current=undefined
       }, [])
+
+
+  
+
   return(
     <div className={s.container}>
         <GoogleMap
@@ -59,7 +66,9 @@ export const Map = ({center}) => {
             position={center}
             label={{text:'You are here'}}
             />
+     
       </GoogleMap>
+     
     </div>
    )
   }

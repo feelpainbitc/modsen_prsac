@@ -29,6 +29,12 @@ function App() {
     },
     [],
   )
+
+  const btnCurPosition=React.useCallback(
+    (curLoc)=>{
+      setCenter(curLoc)
+    }
+  )
     React.useEffect(()=>{
       getBrowserLocation().then((curLoc)=>{
         setCenter(curLoc)
@@ -42,8 +48,13 @@ function App() {
     <div>
       <div className={s.addresSearchContainer}>
         <Autocomplete isLoaded={isLoaded} onSelect={onPlaceSelect}/>
+        <button 
+        className={s.btn}
+        onClick={()=>btnCurPosition}
+        />
       </div>
       {isLoaded ? <Map center={center}/> : <h2>Loading...</h2>}
+   
     </div>
   );
 }

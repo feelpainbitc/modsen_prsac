@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import s from './Autocomplete.module.css'
 import usePlacesAutocomplete, {
@@ -6,6 +6,7 @@ import usePlacesAutocomplete, {
     getLatLng,
   } from "use-places-autocomplete";
   import useOnclickOutside from "react-cool-onclickoutside";
+
 
 /**
 * @author
@@ -28,9 +29,10 @@ export const Autocomplete = ({isLoaded,onSelect}) => {
         clearSuggestions();
       });
     
-      const handleInput = (e) => {
+      const handleInputFirst = (e) => {
         setValue(e.target.value);
       };
+
     
       const handleSelect =
         ({ description }) =>
@@ -65,16 +67,19 @@ export const Autocomplete = ({isLoaded,onSelect}) => {
             }
         },[isLoaded,init])
 
+        const [map,setMap]=React.useState(/** @type google.maps.Map */null)
+
   return(
     <div className={s.root} ref={ref}>
         <input type='text'
          className={s.findbar}
          value={value}
-         onChange={handleInput}
+         onChange={handleInputFirst}
          disabled={!ready}
-         placeholder="Where are you going?"
+         placeholder="Where are you?"
          />
         {status === "OK" && <ul className={s.suggestions}>{renderSuggestions()}</ul>}
+  
     </div>
    )
   }
