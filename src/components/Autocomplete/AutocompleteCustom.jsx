@@ -6,14 +6,13 @@ import usePlacesAutocomplete, {
     getLatLng,
   } from "use-places-autocomplete";
   import useOnclickOutside from "react-cool-onclickoutside";
+import { Button } from 'bootstrap';
 
 
-/**
-* @author
-* @function Autocomplete
-**/
 
-export const Autocomplete = ({isLoaded,onSelect}) => {
+
+
+export const AutocompleteCustom = ({isLoaded,onSelect}) => {
     const {
         ready,
         value,
@@ -76,10 +75,10 @@ export const Autocomplete = ({isLoaded,onSelect}) => {
          value={value}
          onChange={handleInputFirst}
          disabled={!ready}
-         placeholder="Where are you?"
+         placeholder="Where are you going?"
          />
         {status === "OK" && <ul className={s.suggestions}>{renderSuggestions()}</ul>}
-  
+        
     </div>
    )
   }
