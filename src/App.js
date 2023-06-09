@@ -1,3 +1,4 @@
+/*global google*/
 import React, { useCallback, useEffect, useRef } from 'react';
 import { useState } from 'react';
 
@@ -7,7 +8,7 @@ import { Map } from './components/Map/Map';
 
 
 import { AutocompleteCustom } from './components/Autocomplete/AutocompleteCustom';
-import { useJsApiLoader,Autocomplete } from '@react-google-maps/api';
+import { useJsApiLoader,DirectionsRenderer,Autocomplete } from '@react-google-maps/api';
 import { getBrowserLocation } from './utils/geo';
 
 const API_KEY = process.env.REACT_APP_API_KEY
@@ -18,7 +19,7 @@ const defaultValueCenter = {
   lng: -0.136439
 };
 const libraries = ['places']
-const google = window.google;
+
 
 
 
@@ -43,7 +44,6 @@ function App() {
   React.useEffect(() => {
     getBrowserLocation().then((curLoc) => {
       setCenter(curLoc)
-      setOriginRef(curLoc)
     })
       .catch((defaultValueCenter) => {
         setCenter(defaultValueCenter)
@@ -51,42 +51,66 @@ function App() {
   }, [])
 
 
-  const [directionResponse, setDirectionResponse] = useState(null)
+  const [directionsResponse, setDirectionsResponse] = useState(null)
   const [distance, setDistance] = useState()
   const [duration, setDuration] = useState()
-  const [originRef,setOriginRef]=useState()
   
+  /** @type React.MutableRefObject<HTMLInputElement> */
   const destinationRef = useRef()
-  
+  /** @type React.MutableRefObject<HTMLInputElement> */
+  const originRef = useRef()
 
-  // async function calculateRoute() {
-  //   if (destinationRef.current.value === '' || originRef.current.value === '') {
-  //     return
-  //   }
-  //   const directionsService = new google.maps.DirectionsService()
-  //   const results= await directionsService.route({
-  //     origin:originRef,
-  //     destination:destinationRef.current.value,
-  //     travelMode:google.maps.TravelMode.DRIVING
-  //   })
-  // }
+  async function calculateRoute() {
+   
+    if (destinationRef.current.value == '' || originRef.current.value == '') {
+      return
+    }
+    const directionsService = new google.maps.DirectionsService()
+    const results= await directionsService.route({
+      origin:originRef.current.value,
+      destination:destinationRef.current.value,
+      travelMode:google.maps.TravelMode.DRIVING
+    })
+    setDirectionsResponse(results)
+    setDistance(results.routes[0].legs[0].distance.text)
+    setDuration(results.routes[0].legs[0].duration.text)
+  }
+  function cl(){
+    console.log(originRef.current.value)
+    console.log(destinationRef.current.value)
+  }
+  function clearRoute(){
+    setDirectionsResponse(null)
+    setDistance('')
+    setDuration('')
+    originRef.current.value=''
+    destinationRef.current.value=''
+  }
 
   return (
     <div>
       <div className={s.calculateRouteContainer}>
         <div className={s.firstStr}>
         <div className={s.inputPlaces}>
-        <AutocompleteCustom isLoaded={isLoaded} onSelect={onPlaceSelect}/>
-        <AutocompleteCustom isLoaded={isLoaded} onSelect={onPlaceSelect}/>
+        <Autocomplete>
+          <input 
+          type='text' placeholder='Origin' ref={originRef}
+          />
+          </Autocomplete>
+        <Autocomplete>
+          <input
+          type='text' placeholder='Destination' ref={destinationRef}
+          />
+          </Autocomplete>
         </div>
         <div className={s.btnGroup}>
-        <button className={s.btnCalc}>Calculate route</button>
-        <button className={s.btnCancel}></button>
+        <button className={s.btnCalc} onClick={calculateRoute}>Calculate route</button>
+        <button className={s.btnCancel} onClick={clearRoute}></button>
         </div>
         </div>
         <div className={s.textPlaces}>
-        <p>Duration: {}</p>
-        <p>Distance: {}</p>
+        <p>Duration: {duration}</p>
+        <p>Distance: {distance}</p>
         </div>
       </div>
       <div className={s.addresSearchContainer}>
@@ -98,6 +122,9 @@ function App() {
         {/* <button onClick={calculateRoute}>Calculate route</button> */}
       </div>
       {isLoaded ? <Map center={center} /> : <h2>Loading...</h2>}
+      {directionsResponse && (
+        <DirectionsRenderer setDirections={directionsResponse}/>
+      )}
     </div>
   );
 }
