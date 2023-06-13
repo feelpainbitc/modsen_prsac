@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from 'react'
 
+
 import s from './Autocomplete.module.css'
 import usePlacesAutocomplete, {
     getGeocode,
     getLatLng,
   } from "use-places-autocomplete";
   import useOnclickOutside from "react-cool-onclickoutside";
-import { Button } from 'bootstrap';
 
-
-
-
-
-export const AutocompleteCustom = ({isLoaded,onSelect}) => {
+  export const Autocomplete = ({isLoaded,onSelect}) => {
     const {
         ready,
         value,
@@ -66,7 +62,6 @@ export const AutocompleteCustom = ({isLoaded,onSelect}) => {
             }
         },[isLoaded,init])
 
-        const [map,setMap]=React.useState(/** @type google.maps.Map */null)
 
   return(
     <div className={s.root} ref={ref}>

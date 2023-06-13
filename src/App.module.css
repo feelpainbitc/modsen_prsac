@@ -32,51 +32,10 @@
   cursor: pointer;
   margin-left: 10px;
   overflow: visible;
-  position: relative;
-}
-.calculateRouteContainer{
-  margin: 13px;
-  padding: 10px;
-  background-color: rgb(255, 255, 255);
-  border: 1px solid #1569c2;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  z-index: 100;
-
-}
-.btnCalc{
-  font-size: 18px;
-  height: 70%;
-  background-color: rgb(99, 155, 245);
-  color:aliceblue;
-  border-radius: 8px;
-}
-.btnCancel{
-  background: url('../public/assets/cancelicon.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  border: 0;
-  margin-left: 5px;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  z-index: 100;
+  position: absolute;
+  z-index: 1000;
 }
 
-.textPlaces{
-  display: flex;
-  justify-content: space-around;
-}
-.firstStr{
-  display: flex;
-}
-.btnGroup{
-  display: flex;
-  align-items: center ;
-  justify-content: space-between;
-}
-.inputPlaces{
-  display: flex;
-}
+
+
+
