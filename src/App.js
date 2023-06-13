@@ -1,5 +1,5 @@
 /*global google*/
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef,useSelector } from 'react';
 import { useState } from 'react';
 
 
@@ -62,7 +62,7 @@ function App() {
 
   async function calculateRoute() {
    
-    if (destinationRef.current.value == '' || originRef.current.value == '') {
+    if (destinationRef.current.value === '' || originRef.current.value === '') {
       return
     }
     const directionsService = new google.maps.DirectionsService()
@@ -71,14 +71,17 @@ function App() {
       destination:destinationRef.current.value,
       travelMode:google.maps.TravelMode.DRIVING
     })
+    directionsService.route({
+      origin:originRef.current.value,
+      destination:destinationRef.current.value,
+      travelMode:google.maps.TravelMode.DRIVING
+    })
     setDirectionsResponse(results)
+    console.log(directionsResponse)
     setDistance(results.routes[0].legs[0].distance.text)
     setDuration(results.routes[0].legs[0].duration.text)
   }
-  function cl(){
-    console.log(originRef.current.value)
-    console.log(destinationRef.current.value)
-  }
+
   function clearRoute(){
     setDirectionsResponse(null)
     setDistance('')
@@ -86,6 +89,8 @@ function App() {
     originRef.current.value=''
     destinationRef.current.value=''
   }
+  const formattedOrigin = originRef
+  const formattedDestination = destinationRef
 
   return (
     <div>
@@ -117,14 +122,11 @@ function App() {
         <AutocompleteCustom isLoaded={isLoaded} onSelect={onPlaceSelect} ref={destinationRef} />
         <button
           className={s.btn}
-          onClick={() => getBrowserLocation().then(currentLocation => { setCenter(currentLocation) })}
+          onClick={() => getBrowserLocation().then(currentLocation => { setCenter(currentLocation)})}
         />
         {/* <button onClick={calculateRoute}>Calculate route</button> */}
       </div>
-      {isLoaded ? <Map center={center} /> : <h2>Loading...</h2>}
-      {directionsResponse && (
-        <DirectionsRenderer setDirections={directionsResponse}/>
-      )}
+      {isLoaded ? <Map center={center} origin={formattedOrigin} destination={formattedDestination}/> : <h2>Loading...</h2>}
     </div>
   );
 }
