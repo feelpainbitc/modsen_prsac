@@ -9,7 +9,7 @@ export const getBrowserLocation=()=>{
             navigator.geolocation.getCurrentPosition(
                 (pos)=>{
                     const { latitude:lat, longitude:lng}=pos.coords;
-                    resolve({lat,lng});
+                    resolve({lat,lng}); 
                 },
                 ()=>{
                     reject(defaultValueCenter);

@@ -1,11 +1,12 @@
+/*global google*/
 import React, { useRef } from 'react'
 
-import { GoogleMap, MarkerF} from '@react-google-maps/api'
+import { GoogleMap, MarkerF,DirectionsRenderer} from '@react-google-maps/api'
 import { useJsApiLoader } from '@react-google-maps/api';
 
 import { defaultTheme } from './Theme';
 import s from './Map.module.css'
-import { getBrowserLocation } from '../../utils/geo';
+
 
 /**
 * @author
@@ -37,7 +38,7 @@ const defaultOptions={
   styles:defaultTheme,
 } 
 
-export const Map = ({center}) => {
+export const Map = ({center},{origin},{destination}) => {
 
     const mapRef=React.useRef(undefined)
 
@@ -48,7 +49,7 @@ export const Map = ({center}) => {
       const onUnmount = React.useCallback(function callback(map) {
         mapRef.current=undefined
       }, [])
-
+      
 
   
 
@@ -66,7 +67,7 @@ export const Map = ({center}) => {
             position={center}
             label={{text:'You are here'}}
             />
-     
+        
       </GoogleMap>
      
     </div>
