@@ -27,6 +27,7 @@ const libraries = ['places']
 
 
 function App() {
+  const [radius,setRadius]=useState(null)
   const [center, setCenter] = useState(defaultValueCenter)
   const onPlaceSelect = useCallback(
     (coordinates) => {
@@ -36,20 +37,31 @@ function App() {
   )
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: API_KEY,
+    googleMapsApiKey: "AIzaSyDaY4S9bDqrvZZUGwJvp0dnPE4IHNElF9M",
     libraries
   })
+  const onBtnClickHandler=()=>{
+    console.log(radius)
+  }
 return(
-  <div>
+  <div className={s.container}>
+    <div className={s.sideBar}>
+      <h1>4EX MAP</h1>
+      <div>
+      <p>По какому радиусу будет поиск?</p>
+      <input placeholder='Radius?' value={radius} onChange={(e)=>setRadius(e.target.value)} type='number' className={s.sideBarInput}/>
+      </div>
+    </div>
+  <div className={s.mapContainer}>
   <div className={s.addresSearchContainer}>
   <Autocomplete isLoaded={isLoaded} onSelect={onPlaceSelect}/>
   </div>
- 
-  {isLoaded ?  <Map center={center}/> : <h2>Loading...</h2>}
+  {isLoaded ?  <Map className={s.map} center={center} radius={radius}/> : <h2>Loading...</h2>}
   <button
     className={s.btn}
     onClick={() => getBrowserLocation().then(currentLocation => { setCenter(currentLocation)})}
     />
+  </div>
   </div>
 );
 }

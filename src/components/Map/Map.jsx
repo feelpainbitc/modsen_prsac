@@ -1,7 +1,7 @@
 import {React,useCallback,useState,useEffect,useRef} from 'react'
 
 
-import { GoogleMap,MarkerF } from '@react-google-maps/api';
+import { GoogleMap,MarkerF,Circle } from '@react-google-maps/api';
 import s from "./Map.module.css"
 
 const containerStyle = {
@@ -26,7 +26,8 @@ const containerStyle = {
       
 
 
-export const Map = ({center}) => {
+export const Map = ({center,radius}) => {
+  
    const mapRef=useRef(undefined)
 
   const onLoad = useCallback(function callback(map) {
@@ -46,8 +47,22 @@ export const Map = ({center}) => {
     onUnmount={onUnmount}
     options={defaultOptions}
     >
-        <MarkerF position={center}/>
+        {radius!=undefined && <Circle center={center} radius={radius*1000} options={circleOptions}/>}
+        <MarkerF position={center} />
     </GoogleMap>
     </div>
    )
   }
+
+
+const circleOptions={
+  strokeOpacity:0.5,
+  strokeWeight:2,
+  clicable:false,
+  draggable:false,
+  visible:true,
+  zIndex:10,
+  fillOpacity:0.05,
+  strokeColor:"#1569c2",
+  fillColor:"080096",
+}
