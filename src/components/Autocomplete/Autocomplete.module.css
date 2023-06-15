@@ -1,5 +1,5 @@
 .root{
-    background-color: #FFF;
+    background-color: #0e1e2e;
     padding: 10px;
     position: relative;
     width: 100%;
@@ -13,7 +13,9 @@
 .findbar{
     padding: 10px 15px;
     width: 100%;
-    border: 2px solid rgb(34,34,34);
+    background-color: #000000;
+    color: #fff;
+    border: 2px solid rgba(34, 34, 34, 0);
     font-size: 1rem;
     font-weight: 700;
 }
@@ -25,7 +27,7 @@
     position: absolute;
     top:0;
     transform: translateY(39px);
-    background: #FFF;
+    background: #1d6fc2;
     border: 2px solid rgb(34,34,34);
     width: 100%;
     z-index: 10;

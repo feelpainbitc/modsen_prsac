@@ -1,4 +1,5 @@
-export const defaultTheme=[
+export const defaultTheme=
+[
     {
         "featureType": "all",
         "elementType": "all",
@@ -7,63 +8,48 @@ export const defaultTheme=[
                 "invert_lightness": true
             },
             {
-                "saturation": "-9"
+                "saturation": 10
             },
             {
-                "lightness": "0"
+                "lightness": 30
             },
             {
-                "visibility": "simplified"
+                "gamma": 0.5
+            },
+            {
+                "hue": "#435158"
             }
         ]
     },
     {
-        "featureType": "landscape.man_made",
-        "elementType": "all",
+        "featureType": "poi",
+        "elementType": "geometry.fill",
         "stylers": [
             {
-                "weight": "1.00"
+                "visibility": "off"
             }
         ]
     },
     {
-        "featureType": "road.highway",
-        "elementType": "all",
+        "featureType": "poi",
+        "elementType": "geometry.stroke",
         "stylers": [
             {
-                "weight": "0.49"
+                "visibility": "off"
             }
         ]
     },
     {
-        "featureType": "road.highway",
-        "elementType": "labels",
+        "featureType": "poi",
+        "elementType": "labels.text.fill",
         "stylers": [
             {
-                "visibility": "on"
-            },
-            {
-                "weight": "0.01"
-            },
-            {
-                "lightness": "-7"
-            },
-            {
-                "saturation": "-35"
+                "visibility": "off"
             }
         ]
     },
     {
-        "featureType": "road.highway",
-        "elementType": "labels.text",
-        "stylers": [
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway",
+        "featureType": "poi",
         "elementType": "labels.text.stroke",
         "stylers": [
             {
@@ -72,11 +58,38 @@ export const defaultTheme=[
         ]
     },
     {
-        "featureType": "road.highway",
+        "featureType": "poi",
         "elementType": "labels.icon",
         "stylers": [
             {
-                "visibility": "on"
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit.station.bus",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
             }
         ]
     }

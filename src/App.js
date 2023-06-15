@@ -37,7 +37,7 @@ function App() {
   )
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: ,
+    googleMapsApiKey: "AIzaSyDaY4S9bDqrvZZUGwJvp0dnPE4IHNElF9M",
     libraries
   })
   const onBtnClickHandler=()=>{
@@ -46,22 +46,22 @@ function App() {
 return(
   <div className={s.container}>
     <div className={s.sideBar}>
-      <h1>4EX MAP</h1>
+      <p className={s.logo}>4EX MAP</p>
       <div>
-      <p>По какому радиусу будет поиск?</p>
+      <p className={s.inputTop}>По какому радиусу будет поиск?</p>
       <input placeholder='Radius?' value={radius} onChange={(e)=>setRadius(e.target.value)} type='number' className={s.sideBarInput}/>
       </div>
     </div>
-  <div className={s.mapContainer}>
-  <div className={s.addresSearchContainer}>
-  <Autocomplete isLoaded={isLoaded} onSelect={onPlaceSelect}/>
-  </div>
-  {isLoaded ?  <Map className={s.map} center={center} radius={radius}/> : <h2>Loading...</h2>}
-  <button
-    className={s.btn}
-    onClick={() => getBrowserLocation().then(currentLocation => { setCenter(currentLocation)})}
-    />
-  </div>
+    <div className={s.mapContainer}>
+      <div className={s.addresSearchContainer}>
+        <Autocomplete isLoaded={isLoaded} onSelect={onPlaceSelect}/>
+      </div>
+      {isLoaded ?  <Map className={s.map} center={center} radius={radius}/> : <h2>Loading...</h2>}
+      <button
+      className={s.btn}
+      onClick={() => getBrowserLocation().then(currentLocation => { setCenter(currentLocation)})}
+      />
+    </div>
   </div>
 );
 }

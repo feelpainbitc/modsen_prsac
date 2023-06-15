@@ -3,6 +3,7 @@ import {React,useCallback,useState,useEffect,useRef} from 'react'
 
 import { GoogleMap,MarkerF,Circle } from '@react-google-maps/api';
 import s from "./Map.module.css"
+import { defaultTheme } from './Theme';
 
 const containerStyle = {
     width: '100%',
@@ -22,6 +23,7 @@ const containerStyle = {
         scrollwheel:true,
         disableDoubleClickZoom:true,
         fullscreenControl:false,
+        styles:defaultTheme,
       } 
       
 
