@@ -64,7 +64,7 @@ const circleOptions={
   draggable:false,
   visible:true,
   zIndex:10,
-  fillOpacity:0.05,
-  strokeColor:"#1569c2",
+  fillOpacity:0.08,
+  strokeColor:"#C71585",
   fillColor:"080096",
 }

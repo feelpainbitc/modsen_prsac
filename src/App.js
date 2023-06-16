@@ -47,9 +47,18 @@ return(
   <div className={s.container}>
     <div className={s.sideBar}>
       <p className={s.logo}>4EX MAP</p>
-      <div>
+      <div className={s.radiusInput}>
       <p className={s.inputTop}>По какому радиусу будет поиск?</p>
       <input placeholder='Radius?' value={radius} onChange={(e)=>setRadius(e.target.value)} type='number' className={s.sideBarInput}/>
+      </div>
+      <div className={s.btngroup}>
+        <ul>
+          <li>Избранное</li>
+          <li>Контакты</li>
+        </ul>
+      </div>
+      <div className={s.btnloginout}>
+        <a>Log Out</a>
       </div>
     </div>
     <div className={s.mapContainer}>
