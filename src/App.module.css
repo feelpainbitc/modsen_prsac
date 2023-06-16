@@ -36,7 +36,7 @@
 .logo{
   width: 100%;
   text-align: center;
-  font-size: 30px;
+  font-size: 40px;
   font-weight: 600;
 
 }
@@ -45,11 +45,23 @@
   padding-top: 0;
   height: 50px;
   font-size: 30px;
-  width: 80%;
+  border-radius: 15px;
+  width: 90%;
   margin-top: -15px;
+  cursor: pointer;
+  -moz-appearance: textfield;
 }
 .inputTop{
   font-size: 20px;
+}
+.radiusInput{
+  padding-bottom: 10px;
+  border-radius: 10px;
+  border: 1px solid white;
+  background-color: #0e1e2e;
+  display: flex;
+  flex-direction:column ;
+  align-items: center;
 }
   
 
@@ -79,7 +91,50 @@
   position: absolute;
   z-index: 1000;
 }
+.btngroup{
+  font-size: 30px;
+  display: flex;
+}
 
 
+.btngroup li:first-child{
+  list-style: none;
+  background: url("../public//assets/imgonline-com-ua-Resize-spNSxiFlheuW8eT.png") no-repeat 0 7px;
+  padding-left: 30px;
+  cursor: pointer;
+}
+.btngroup li:hover:first-child{
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  color: #2696b8;
+}
+.btngroup li:hover:last-child{
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  color: #2696b8;
+}
+.btngroup li:last-child{
+  list-style: none;
+  background: url("../public//assets/contacts24.png") no-repeat 0 7px;
+  padding-left: 30px;
+  cursor: pointer;
+}
+.btnloginout{
+  position: absolute;
+  bottom: 1%;
+  left: 26%;
+  font-size: 24px;
+  background: url("../public/assets/logout30.png") no-repeat ;
+  letter-spacing: 3px;
+  cursor: pointer;
+  padding-left: 30px;
+}
 
-
+.btnloginout:hover{
+-webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  color: #2696b8;
+}
