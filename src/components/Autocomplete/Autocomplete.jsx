@@ -70,7 +70,7 @@ import usePlacesAutocomplete, {
          value={value}
          onChange={handleInputFirst}
          disabled={!ready}
-         placeholder="Where are you going?"
+         placeholder="Что вы хотите найти?"
          />
         {status === "OK" && <ul className={s.suggestions}>{renderSuggestions()}</ul>}
         

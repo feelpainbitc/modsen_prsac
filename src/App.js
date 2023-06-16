@@ -49,7 +49,7 @@ return(
       <p className={s.logo}>4EX MAP</p>
       <div className={s.radiusInput}>
       <p className={s.inputTop}>По какому радиусу будет поиск?</p>
-      <input placeholder='Radius?' value={radius} onChange={(e)=>setRadius(e.target.value)} type='number' className={s.sideBarInput}/>
+      <input placeholder='Введите радиус...' value={radius} onChange={(e)=>setRadius(e.target.value)} type='number' className={s.sideBarInput}/>
       </div>
       <div className={s.btngroup}>
         <ul>
@@ -58,7 +58,7 @@ return(
         </ul>
       </div>
       <div className={s.btnloginout}>
-        <a>Log Out</a>
+        <a>Выйти</a>
       </div>
     </div>
     <div className={s.mapContainer}>
