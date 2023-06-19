@@ -1,12 +1,12 @@
 /*global google*/
-import React, { useCallback, useEffect, useRef,useSelector } from 'react';
+import React, { useCallback,useEffect } from 'react';
 import { useState } from 'react';
 
 
 import s from './App.module.css';
 import { Map } from './components/Map/Map';
 import { getBrowserLocation } from './components/utils/geo';
-
+import { getPlacesData } from './components/utils/getplaces';
 
 
 import { useJsApiLoader } from '@react-google-maps/api';
@@ -29,20 +29,39 @@ const libraries = ['places']
 function App() {
   const [radius,setRadius]=useState(null)
   const [center, setCenter] = useState(defaultValueCenter)
+  const [places,setPlaces]=useState([])
+
+  useEffect(()=>{
+    console.log(center)
+    getPlacesData(center,radius)
+    .then((data)=>{
+      console.log(data)
+      setPlaces(data)
+    })
+  },[center,radius])
+
+
+
   const onPlaceSelect = useCallback(
     (coordinates) => {
       setCenter(coordinates)
     },
     [],
   )
+
+
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyDaY4S9bDqrvZZUGwJvp0dnPE4IHNElF9M",
+    googleMapsApiKey: API_KEY,
     libraries
   })
-  const onBtnClickHandler=()=>{
-    console.log(radius)
-  }
+
+
+  // const onBtnClickHandler=()=>{
+  //   console.log(radius)
+  // }
+
+  
 return(
   <div className={s.container}>
     <div className={s.sideBar}>
@@ -65,7 +84,7 @@ return(
       <div className={s.addresSearchContainer}>
         <Autocomplete isLoaded={isLoaded} onSelect={onPlaceSelect}/>
       </div>
-      {isLoaded ?  <Map className={s.map} center={center} radius={radius}/> : <h2>Loading...</h2>}
+      {isLoaded ?  <Map className={s.map} center={center} places={places}  radius={radius}/> : <h2>Loading...</h2>}
       <button
       className={s.btn}
       onClick={() => getBrowserLocation().then(currentLocation => { setCenter(currentLocation)})}

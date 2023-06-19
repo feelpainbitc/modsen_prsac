@@ -1,9 +1,11 @@
+/*global google*/
 import {React,useCallback,useState,useEffect,useRef} from 'react'
 
 
-import { GoogleMap,MarkerF,Circle } from '@react-google-maps/api';
+import { GoogleMap,MarkerF,Circle,Geocoder } from '@react-google-maps/api';
 import s from "./Map.module.css"
 import { defaultTheme } from './Theme';
+import {getGeocode, getLatLng,} from "use-places-autocomplete";
 
 const containerStyle = {
     width: '100%',
@@ -25,12 +27,34 @@ const containerStyle = {
         fullscreenControl:false,
         styles:defaultTheme,
       } 
+
+      const circleOptions={
+        strokeOpacity:0.5,
+        strokeWeight:2,
+        clicable:false,
+        draggable:false,
+        visible:true,
+        zIndex:10,
+        fillOpacity:0.08,
+        strokeColor:"#C71585",
+        fillColor:"080096",
+      }
       
+      
+var geocoder
 
-
-export const Map = ({center,radius}) => {
+export const Map = ({center,radius,places}) => {
   
    const mapRef=useRef(undefined)
+
+
+   let request={
+    location: center,
+    radius:radius,
+    type:['restaurant']
+  }
+
+
 
   const onLoad = useCallback(function callback(map) {
     mapRef.current=map
@@ -40,7 +64,10 @@ export const Map = ({center,radius}) => {
     mapRef.current=undefined
   }, [])
 
-  return(<div className={s.container}>
+  geocoder = new google.maps.Geocoder();
+
+  return(
+  <div className={s.container}>
     <GoogleMap
     mapContainerStyle={containerStyle}
     center={center}
@@ -49,22 +76,15 @@ export const Map = ({center,radius}) => {
     onUnmount={onUnmount}
     options={defaultOptions}
     >
-        {radius!=undefined && <Circle center={center} radius={radius*1000} options={circleOptions}/>}
-        <MarkerF position={center} />
+      {radius!=undefined && <Circle center={center} radius={radius*1000} options={circleOptions}/>}
+      <MarkerF position={center} title="my pos"/>
+      {places?.map((place,i)=>(
+        console.log({lat:place.latitude,lng:place.longitude}),
+          <MarkerF position={{lat:Number(place.latitude),lng:Number(place.longitude)}} title={place.name} key={i}/>
+      ))}
     </GoogleMap>
-    </div>
+  </div>
    )
   }
 
 
-const circleOptions={
-  strokeOpacity:0.5,
-  strokeWeight:2,
-  clicable:false,
-  draggable:false,
-  visible:true,
-  zIndex:10,
-  fillOpacity:0.08,
-  strokeColor:"#C71585",
-  fillColor:"080096",
-}

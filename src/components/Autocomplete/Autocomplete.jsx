@@ -20,10 +20,11 @@ import usePlacesAutocomplete, {
         initOnMount:false,
         debounce: 300,
       });
+
+
       const ref = useOnclickOutside(() => {
         clearSuggestions();
       });
-    
       const handleInputFirst = (e) => {
         setValue(e.target.value);
       };
@@ -42,13 +43,14 @@ import usePlacesAutocomplete, {
             }); 
          };
     
+
+
       const renderSuggestions = () =>
         data.map((suggestion) => {
           const {
             place_id,
             structured_formatting: { main_text, secondary_text },
           } = suggestion;
-    
           return (
             <li className={s.listItem} key={place_id} onClick={handleSelect(suggestion)}>
               <strong>{main_text}</strong> <small>{secondary_text}</small>
@@ -56,11 +58,16 @@ import usePlacesAutocomplete, {
           );
         });
 
+
+
+
         React.useEffect(()=>{
             if(isLoaded){
                 init()
             }
         },[isLoaded,init])
+
+        
 
 
   return(
