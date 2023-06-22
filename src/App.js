@@ -42,15 +42,15 @@ function App() {
   const [places,setPlaces]=useState([])
 
 
-  useEffect(()=>{
-    console.log(center)
-    console.log(showPlace)
-    getPlacesData(center,radius)
-    .then((data)=>{
-      console.log(data)
-      if(showPlace==true){setPlaces(data)}
-    })
-  },[showPlace])
+  // useEffect(()=>{
+  //   console.log(center)
+  //   console.log(showPlace)
+  //   getPlacesData(center,radius)
+  //   .then((data)=>{
+  //     console.log(data)
+  //     if(showPlace==true){setPlaces(data)}
+  //   })
+  // },[showPlace])
 
 
 
