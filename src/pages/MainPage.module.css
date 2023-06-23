@@ -1,0 +1,158 @@
+.addresSearchContainer{
+    max-width: 500px;
+    width: 100%;
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+  .container{
+    display: flex;
+    height: 100vh;
+  }
+  .mapContainer{
+    width: 80vw;
+    height: 100vh;
+  }
+  .map{
+    width: 100%;
+    height: 100%;
+  }
+  .sideBar{
+    margin-left: 4px;
+    justify-content: center;
+    border-radius: 10px;
+    width: 20%;
+    height: 100vh;
+    z-index: 10;
+    background-color: #0e1e2e;
+    overflow-x: hidden;
+    top: 0;
+    color: #e3e3e3;
+    left: 0;
+    position: fixed;
+  }
+  .logo{
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 600;
+  
+  }
+  .sideBarInput{
+    background-color: #e3e3e3;
+    padding-top: 0;
+    height: 50px;
+    font-size: 30px;
+    border-radius: 15px;
+    width: 90%;
+    margin-top: -15px;
+    cursor: pointer;
+    -moz-appearance: textfield;
+  }
+  .inputTop{
+    font-size: 20px;
+  }
+  .placeDetailsList{
+    max-width: 360px;
+    z-index: 100;
+    height: 500px;
+    overflow: scroll;
+    border: 1px solid white;
+  }
+  .radiusInput{
+    padding-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #2696b8;
+    background-color: #0e1e2e;
+    display: flex;
+  
+    flex-direction:column ;
+    align-items: center;
+  }
+    
+  
+  @media (max-width: 320px) {
+    .addresSearchContainer{
+      max-width: 320px;
+      width: 80%;
+      position: fixed;
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+  }
+  .btn{
+    background: url('../assets/myposition.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width:50px;
+    height: 50px;
+    top: 90%;
+    left: 90%;
+    border: 0;
+    cursor: pointer;
+    margin-left: 10px;
+    overflow: visible;
+    position: absolute;
+    z-index: 1000;
+  }
+  .btngroup{
+    font-size: 30px;
+    display: flex;
+  }
+  
+  
+  .btngroup li:first-child{
+    list-style: none;
+    background: url("../assets/imgonline-com-ua-Resize-spNSxiFlheuW8eT.png") no-repeat 0 7px;
+    padding-left: 30px;
+    cursor: pointer;
+  }
+  .btngroup li:hover:first-child{
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    color: #2696b8;
+  }
+  .btngroup li:hover:last-child{
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    color: #2696b8;
+  }
+  .btngroup li:last-child{
+    list-style: none;
+    background: url("../assets/contacts24.png") no-repeat 0 7px;
+    padding-left: 30px;
+    cursor: pointer;
+  }
+  .btnloginout{
+    position: absolute;
+    bottom: 1%;
+    left: 26%;
+    font-size: 24px;
+    background: url("../assets/logout30.png") no-repeat ;
+    letter-spacing: 3px;
+    cursor: pointer;
+    padding-left: 30px;
+  }
+  
+  .btnloginout:hover{
+  -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    color: #2696b8;
+  }
+  .btnshow{
+    margin-top: 5px;
+    width: 80%;
+    font-size: 20px;
+    height: 3vh;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(31, 56, 137);
+  }
+  
