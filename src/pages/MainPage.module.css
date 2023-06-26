@@ -1,4 +1,4 @@
-.addresSearchContainer{
+.addresSearchContainer {
     max-width: 500px;
     width: 100%;
     position: fixed;
@@ -6,20 +6,20 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
-  }
-  .container{
+}
+.container {
     display: flex;
     height: 100vh;
-  }
-  .mapContainer{
+}
+.mapContainer {
     width: 80vw;
     height: 100vh;
-  }
-  .map{
+}
+.map {
     width: 100%;
     height: 100%;
-  }
-  .sideBar{
+}
+.sideBar {
     margin-left: 4px;
     justify-content: center;
     border-radius: 10px;
@@ -32,15 +32,14 @@
     color: #e3e3e3;
     left: 0;
     position: fixed;
-  }
-  .logo{
+}
+.logo {
     width: 100%;
     text-align: center;
     font-size: 40px;
     font-weight: 600;
-  
-  }
-  .sideBarInput{
+}
+.sideBarInput {
     background-color: #e3e3e3;
     padding-top: 0;
     height: 50px;
@@ -50,45 +49,44 @@
     margin-top: -15px;
     cursor: pointer;
     -moz-appearance: textfield;
-  }
-  .inputTop{
+}
+.inputTop {
     font-size: 20px;
-  }
-  .placeDetailsList{
+}
+.placeDetailsList {
     max-width: 360px;
     z-index: 100;
     height: 450px;
     overflow: scroll;
     border: 1px solid white;
-  }
-  .radiusInput{
+}
+.radiusInput {
     padding-bottom: 10px;
     border-radius: 10px;
     border: 1px solid #2696b8;
     background-color: #0e1e2e;
     display: flex;
-  
-    flex-direction:column ;
+
+    flex-direction: column;
     align-items: center;
-  }
-    
-  
-  @media (max-width: 320px) {
-    .addresSearchContainer{
-      max-width: 320px;
-      width: 80%;
-      position: fixed;
-      top: 15px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
+}
+
+@media (max-width: 320px) {
+    .addresSearchContainer {
+        max-width: 320px;
+        width: 80%;
+        position: fixed;
+        top: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
     }
-  }
-  .btn{
+}
+.btn {
     background: url('../assets/myposition.png');
     background-size: contain;
     background-repeat: no-repeat;
-    width:50px;
+    width: 50px;
     height: 50px;
     top: 90%;
     left: 90%;
@@ -98,55 +96,55 @@
     overflow: visible;
     position: absolute;
     z-index: 1000;
-  }
-  .btngroup{
+}
+.btngroup {
     font-size: 30px;
     display: flex;
-  }
-  
-  
-  .btngroup li:first-child{
+}
+
+.btngroup li:first-child {
     list-style: none;
-    background: url("../assets/imgonline-com-ua-Resize-spNSxiFlheuW8eT.png") no-repeat 0 7px;
+    background: url('../assets/imgonline-com-ua-Resize-spNSxiFlheuW8eT.png')
+        no-repeat 0 7px;
     padding-left: 30px;
     cursor: pointer;
-  }
-  .btngroup li:hover:first-child{
+}
+.btngroup li:hover:first-child {
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
     color: #2696b8;
-  }
-  .btngroup li:hover:last-child{
+}
+.btngroup li:hover:last-child {
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
     color: #2696b8;
-  }
-  .btngroup li:last-child{
+}
+.btngroup li:last-child {
     list-style: none;
-    background: url("../assets/contacts24.png") no-repeat 0 7px;
+    background: url('../assets/contacts24.png') no-repeat 0 7px;
     padding-left: 30px;
     cursor: pointer;
-  }
-  .btnloginout{
+}
+.btnloginout {
     position: absolute;
     bottom: 1%;
     left: 26%;
     font-size: 24px;
-    background: url("../assets/logout30.png") no-repeat ;
+    background: url('../assets/logout30.png') no-repeat;
     letter-spacing: 3px;
     cursor: pointer;
     padding-left: 30px;
-  }
-  
-  .btnloginout:hover{
-  -webkit-transform: scale(1.1);
+}
+
+.btnloginout:hover {
+    -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
     color: #2696b8;
-  }
-  .btnshow{
+}
+.btnshow {
     margin-top: 5px;
     width: 80%;
     font-size: 20px;
@@ -154,5 +152,52 @@
     border-radius: 5px;
     color: white;
     background-color: rgb(31, 56, 137);
-  }
-  
+}
+.mainMenu {
+    border-right: 2px solid black;
+    width: 100px;
+    height: 100vh;
+    background-color: #f6f5ef;
+    position: fixed;
+    z-index: 100000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logo {
+    width: 32px;
+    height: 30px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+.btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.btnsFind {
+    background: url('../assets/searchbtn.png');
+    background-size: contain;
+    border: 0;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+.btnsFavourite {
+    background: url('../assets/favourites.png');
+    cursor: pointer;
+    border: 0;
+    width: 60px;
+    height: 60px;
+}
+.logout {
+    position: fixed;
+    top: 91%;
+    background: url('../assets/logout.png') 60% 60% no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    border: 0;
+    width: 70px;
+    height: 70px;
+}

@@ -89,7 +89,7 @@ export const Map = ({ center, radius, places, showPlace }) => {
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}
-                zoom={10}
+                zoom={12}
                 onLoad={onLoad}
                 onUnmount={onUnmount}
                 options={defaultOptions}

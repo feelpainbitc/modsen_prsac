@@ -1,54 +1,15 @@
 export const defaultTheme = [
     {
         featureType: 'all',
-        elementType: 'all',
+        elementType: 'labels.text',
         stylers: [
             {
-                invert_lightness: true,
-            },
-            {
-                saturation: 10,
-            },
-            {
-                lightness: 30,
-            },
-            {
-                gamma: 0.5,
-            },
-            {
-                hue: '#435158',
+                color: '#878787',
             },
         ],
     },
     {
-        featureType: 'poi',
-        elementType: 'geometry.fill',
-        stylers: [
-            {
-                visibility: 'off',
-            },
-        ],
-    },
-    {
-        featureType: 'poi',
-        elementType: 'geometry.stroke',
-        stylers: [
-            {
-                visibility: 'off',
-            },
-        ],
-    },
-    {
-        featureType: 'poi',
-        elementType: 'labels.text.fill',
-        stylers: [
-            {
-                visibility: 'off',
-            },
-        ],
-    },
-    {
-        featureType: 'poi',
+        featureType: 'all',
         elementType: 'labels.text.stroke',
         stylers: [
             {
@@ -57,6 +18,15 @@ export const defaultTheme = [
         ],
     },
     {
+        featureType: 'landscape',
+        elementType: 'all',
+        stylers: [
+            {
+                color: '#f9f5ed',
+            },
+        ],
+    },
+    {
         featureType: 'poi',
         elementType: 'labels.icon',
         stylers: [
@@ -66,11 +36,20 @@ export const defaultTheme = [
         ],
     },
     {
-        featureType: 'road',
-        elementType: 'labels.icon',
+        featureType: 'road.highway',
+        elementType: 'all',
         stylers: [
             {
-                visibility: 'off',
+                color: '#f5f5f5',
+            },
+        ],
+    },
+    {
+        featureType: 'road.highway',
+        elementType: 'geometry.stroke',
+        stylers: [
+            {
+                color: '#c9c9c9',
             },
         ],
     },
@@ -84,11 +63,11 @@ export const defaultTheme = [
         ],
     },
     {
-        featureType: 'transit.station.bus',
-        elementType: 'labels.icon',
+        featureType: 'water',
+        elementType: 'all',
         stylers: [
             {
-                visibility: 'off',
+                color: '#aee0f4',
             },
         ],
     },

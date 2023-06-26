@@ -1,47 +1,37 @@
-.root{
-    background-color: #0e1e2e;
-    padding: 10px;
-    position: relative;
-    width: 100%;
-    display: flex;
-    border: 1px solid #1569c2;
-}
-
-.root *{
+.root * {
     box-sizing: border-box;
 }
-.findbar{
+.findbar {
+    border: 1px solid #595959;
+    border-radius: 6px;
     padding: 10px 15px;
     width: 100%;
-    background-color: #000000;
-    color: #fff;
-    border: 2px solid rgba(34, 34, 34, 0);
+    color: #000000;
     font-size: 1rem;
     font-weight: 700;
 }
-.findbar:focus{
-    border-color: blue;
+.findbar:focus {
+    border: 2px solid #000000;
     outline: none;
 }
-.suggestions{
+.suggestions {
     position: absolute;
-    top:0;
-    transform: translateY(39px);
-    background: #1d6fc2;
-    border: 2px solid rgb(34,34,34);
+    top: 0;
+    transform: translateY(85px);
+    background: #fcfcfc;
+    border: 2px solid rgb(34, 34, 34);
     width: 100%;
     z-index: 10;
     margin: 0;
     padding: 0;
     list-style: none;
     text-align: left;
-
 }
-.listItem{
-    padding:10px 15px;
+.listItem {
+    padding: 10px 15px;
     cursor: pointer;
 }
-.listItem:hover{
+.listItem:hover {
     background: #efefef;
     border: 1px solid #001b92;
 }

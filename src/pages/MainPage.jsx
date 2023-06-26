@@ -13,6 +13,10 @@ import { getPlacesData } from '../components/utils/getplaces'
 import { PlaceDetail } from '../components/PlaceDetail/PlaceDetail'
 import { Autocomplete } from '../components/Autocomplete/Autocomplete'
 import { useAuth } from '../hooks/use-auth.js'
+import { Sidebar } from '../components/Sidebar/Sidebar.jsx'
+import { FavoriteBar } from '../components/FavoriteBar/FavoriteBar.jsx'
+
+import Logo from '../assets/logo.png'
 
 import s from './MainPage.module.css'
 
@@ -57,6 +61,8 @@ export const MainPage = (props) => {
     const [radius, setRadius] = useState(null)
     const [center, setCenter] = useState(defaultValueCenter)
     const [places, setPlaces] = useState([])
+    const [menuActive, setMenuActive] = useState(false)
+    const [favoriteActive, setFavoriteActive] = useState(false)
 
     // useEffect(()=>{
     //   console.log(center)
@@ -74,7 +80,7 @@ export const MainPage = (props) => {
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
-        googleMapsApiKey: API_KEY,
+        googleMapsApiKey: 'AIzaSyDaY4S9bDqrvZZUGwJvp0dnPE4IHNElF9M',
         libraries,
     })
 
@@ -82,7 +88,24 @@ export const MainPage = (props) => {
 
     return isAuth ? (
         <div className={s.container}>
-            <div className={s.sideBar}>
+            <div className={s.mainMenu}>
+                <img src={Logo} alt="Logo" className={s.logo} />
+                <div className={s.btns}>
+                    <button
+                        className={s.btnsFind}
+                        onClick={() => setMenuActive(!menuActive)}
+                    ></button>
+                    <button
+                        className={s.btnsFavourite}
+                        onClick={() => setFavoriteActive(!favoriteActive)}
+                    ></button>
+                </div>
+                <button
+                    className={s.logout}
+                    onClick={() => dispatch(removeUser())}
+                ></button>
+            </div>
+            {/* <div className={s.sideBar}>
                 <p className={s.logo}>4EX MAP</p>
                 <div className={s.radiusInput}>
                     <p className={s.inputTop}>По какому радиусу будет поиск?</p>
@@ -116,14 +139,8 @@ export const MainPage = (props) => {
                         Выйти
                     </button>
                 </div>
-            </div>
+            </div> */}
             <div className={s.mapContainer}>
-                <div className={s.addresSearchContainer}>
-                    <Autocomplete
-                        isLoaded={isLoaded}
-                        onSelect={onPlaceSelect}
-                    />
-                </div>
                 {isLoaded ? (
                     <Map
                         className={s.map}
@@ -144,6 +161,19 @@ export const MainPage = (props) => {
                     }
                 />
             </div>
+            <Sidebar
+                active={menuActive}
+                setActive={setMenuActive}
+                isLoaded={isLoaded}
+                onSelect={onPlaceSelect}
+                showPlace={setShowPlace}
+                radius={radius}
+                setRadius={setRadius}
+            />
+            <FavoriteBar
+                active={favoriteActive}
+                setActive={setFavoriteActive}
+            />
         </div>
     ) : (
         redirect('/login')
