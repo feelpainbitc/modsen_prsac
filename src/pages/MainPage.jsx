@@ -94,7 +94,7 @@ export const MainPage = (props) => {
               ))}
             </div>
             <div className={s.btnloginout}>
-              <a onClick={()=>dispatch(removeUser())}>Выйти</a>
+              <button onClick={()=>dispatch(removeUser())}>Выйти</button>
             </div>
           </div>
           <div className={s.mapContainer}>

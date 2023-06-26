@@ -57,7 +57,7 @@
   .placeDetailsList{
     max-width: 360px;
     z-index: 100;
-    height: 500px;
+    height: 450px;
     overflow: scroll;
     border: 1px solid white;
   }
