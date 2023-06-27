@@ -10,6 +10,7 @@ import {
 
 import MyPosition from '../../assets/user1.png'
 import { Modal } from '../Modal/Modal'
+import { fetchDirection } from '../utils/fetchdir'
 
 import s from './Map.module.css'
 import { defaultTheme } from './Theme'
@@ -55,26 +56,26 @@ export const Map = ({ center, radius, places, showPlace }) => {
     const mapRef = useRef(undefined)
     const [directions, setDirections] = useState()
 
-    const fetchDirection = (place, center) => {
-        if (!place) return
+    // const fetchDirection = (place, center, setDirections) => {
+    //     if (!place) return
 
-        const service = new google.maps.DirectionsService()
-        service.route(
-            {
-                origin: center,
-                destination: {
-                    lat: Number(place.latitude),
-                    lng: Number(place.longitude),
-                },
-                travelMode: google.maps.TravelMode.WALKING,
-            },
-            (result, status) => {
-                if (status === 'OK' && result) {
-                    setDirections(result)
-                }
-            }
-        )
-    }
+    //     const service = new google.maps.DirectionsService()
+    //     service.route(
+    //         {
+    //             origin: center,
+    //             destination: {
+    //                 lat: Number(place.latitude),
+    //                 lng: Number(place.longitude),
+    //             },
+    //             travelMode: google.maps.TravelMode.WALKING,
+    //         },
+    //         (result, status) => {
+    //             if (status === 'OK' && result) {
+    //                 setDirections(result)
+    //             }
+    //         }
+    //     )
+    // }
 
     const onLoad = useCallback(function callback(map) {
         mapRef.current = map
@@ -102,7 +103,7 @@ export const Map = ({ center, radius, places, showPlace }) => {
                     />
                 )}
                 <MarkerF position={center} icon={MyPosition} />
-                <MarkerF position={marker} />
+                {/* <MarkerF position={marker} /> */}
                 {directions && <DirectionsRenderer directions={directions} />}
                 {showPlace != false &&
                     radius != undefined &&
@@ -115,7 +116,7 @@ export const Map = ({ center, radius, places, showPlace }) => {
                             title={place.name}
                             key={i}
                             onClick={() => {
-                                fetchDirection(place, center)
+                                fetchDirection(place, center, setDirections)
                             }}
                         />
                     ))}

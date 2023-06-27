@@ -64,3 +64,18 @@
     padding-top: 15px;
     height: 20px;
 }
+.radiocheck {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+}
+.radiocheck input {
+    width: 30px;
+    height: 30px;
+}
+.list {
+    width: 400px;
+    max-height: 500px;
+    overflow: scroll;
+}

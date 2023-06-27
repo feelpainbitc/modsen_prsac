@@ -6,9 +6,9 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 
 import { useDispatch } from 'react-redux'
 
-import { setUser } from '../store/slices/userSlice'
+import { setUser } from '../../store/slices/userSlice'
 
-import s from './LoginPage.module.css'
+import s from '../LoginPage/LoginPage.module.css'
 
 export const RegisterPage = (props) => {
     const navigate = useNavigate()

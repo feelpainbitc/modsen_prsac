@@ -3,9 +3,9 @@ import React from 'react'
 
 import { Routes, Route } from 'react-router-dom'
 
-import { LoginPage } from './pages/LoginPage'
-import { MainPage } from './pages/MainPage'
-import { RegisterPage } from './pages/RegisterPage'
+import { LoginPage } from './pages/LoginPage/LoginPage'
+import { MainPage } from './pages/MainPage/MainPage'
+import { RegisterPage } from './pages/RegisterPage/RegisterPage'
 
 function App() {
     return (

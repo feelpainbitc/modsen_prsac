@@ -83,7 +83,7 @@
     }
 }
 .btn {
-    background: url('../assets/myposition.png');
+    background: url('../../assets/myposition.png');
     background-size: contain;
     background-repeat: no-repeat;
     width: 50px;
@@ -102,48 +102,6 @@
     display: flex;
 }
 
-.btngroup li:first-child {
-    list-style: none;
-    background: url('../assets/imgonline-com-ua-Resize-spNSxiFlheuW8eT.png')
-        no-repeat 0 7px;
-    padding-left: 30px;
-    cursor: pointer;
-}
-.btngroup li:hover:first-child {
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
-    color: #2696b8;
-}
-.btngroup li:hover:last-child {
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
-    color: #2696b8;
-}
-.btngroup li:last-child {
-    list-style: none;
-    background: url('../assets/contacts24.png') no-repeat 0 7px;
-    padding-left: 30px;
-    cursor: pointer;
-}
-.btnloginout {
-    position: absolute;
-    bottom: 1%;
-    left: 26%;
-    font-size: 24px;
-    background: url('../assets/logout30.png') no-repeat;
-    letter-spacing: 3px;
-    cursor: pointer;
-    padding-left: 30px;
-}
-
-.btnloginout:hover {
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
-    color: #2696b8;
-}
 .btnshow {
     margin-top: 5px;
     width: 80%;
@@ -176,7 +134,7 @@
     align-items: center;
 }
 .btnsFind {
-    background: url('../assets/searchbtn.png');
+    background: url('../../assets/searchbtn.png');
     background-size: contain;
     border: 0;
     cursor: pointer;
@@ -185,7 +143,7 @@
     margin-bottom: 10px;
 }
 .btnsFavourite {
-    background: url('../assets/favourites.png');
+    background: url('../../assets/favourites.png');
     cursor: pointer;
     border: 0;
     width: 60px;
@@ -194,7 +152,7 @@
 .logout {
     position: fixed;
     top: 91%;
-    background: url('../assets/logout.png') 60% 60% no-repeat;
+    background: url('../../assets/logout.png') 60% 60% no-repeat;
     background-size: contain;
     cursor: pointer;
     border: 0;

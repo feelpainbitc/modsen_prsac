@@ -5,18 +5,18 @@ import { redirect } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useJsApiLoader } from '@react-google-maps/api'
 
-import { removeUser } from '../store/slices/userSlice.js'
+import { removeUser } from '../../store/slices/userSlice'
 
-import { Map } from '../components/Map/Map'
-import { getBrowserLocation } from '../components/utils/geo'
-import { getPlacesData } from '../components/utils/getplaces'
-import { PlaceDetail } from '../components/PlaceDetail/PlaceDetail'
-import { Autocomplete } from '../components/Autocomplete/Autocomplete'
-import { useAuth } from '../hooks/use-auth.js'
-import { Sidebar } from '../components/Sidebar/Sidebar.jsx'
-import { FavoriteBar } from '../components/FavoriteBar/FavoriteBar.jsx'
+import { Map } from '../../components/Map/Map'
+import { getBrowserLocation } from '../../components/utils/geo.js'
+import { getPlacesData } from '../../components/utils/getplaces.js'
+import { PlaceDetail } from '../../components/PlaceDetail/PlaceDetail.jsx'
+import { Autocomplete } from '../../components/Autocomplete/Autocomplete.jsx'
+import { useAuth } from '../../hooks/use-auth.js'
+import { Sidebar } from '../../components/Sidebar/Sidebar.jsx'
+import { FavoriteBar } from '../../components/FavoriteBar/FavoriteBar.jsx'
 
-import Logo from '../assets/logo.png'
+import Logo from '../../assets/logo.png'
 
 import s from './MainPage.module.css'
 
@@ -32,7 +32,8 @@ const placesList = [
     {
         name: 'Madarela',
         rating: '3.5',
-        description: 'loremloremloremloremloremloremlorem',
+        description:
+            'loremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem',
         photo: 'https://media-cdn.tripadvisor.com/media/photo-l/11/58/e0/2a/photo0jpg.jpg',
     },
     {
@@ -64,15 +65,16 @@ export const MainPage = (props) => {
     const [menuActive, setMenuActive] = useState(false)
     const [favoriteActive, setFavoriteActive] = useState(false)
 
-    // useEffect(()=>{
-    //   console.log(center)
-    //   console.log(showPlace)
-    //   getPlacesData(center,radius)
-    //   .then((data)=>{
-    //     console.log(data)
-    //     if(showPlace==true){setPlaces(data)}
-    //   })
-    // },[showPlace])
+    // useEffect(() => {
+    //     console.log(center)
+    //     console.log(showPlace)
+    //     getPlacesData(center, radius).then((data) => {
+    //         console.log(data)
+    //         if (showPlace == true) {
+    //             setPlaces(data)
+    //         }
+    //     })
+    // }, [showPlace])
 
     const onPlaceSelect = useCallback((coordinates) => {
         setCenter(coordinates)
@@ -85,7 +87,7 @@ export const MainPage = (props) => {
     })
 
     const { isAuth } = useAuth()
-
+    const [directions, setDirections] = useState()
     return isAuth ? (
         <div className={s.container}>
             <div className={s.mainMenu}>
@@ -167,8 +169,12 @@ export const MainPage = (props) => {
                 isLoaded={isLoaded}
                 onSelect={onPlaceSelect}
                 showPlace={setShowPlace}
+                activePlaces={showPlace}
                 radius={radius}
                 setRadius={setRadius}
+                places={places}
+                center={center}
+                setDirections={setDirections}
             />
             <FavoriteBar
                 active={favoriteActive}

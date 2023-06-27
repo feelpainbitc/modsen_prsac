@@ -1,11 +1,15 @@
 import axios from 'axios'
-const URL = 'https://travel-advisor.p.rapidapi.com/attractions/list-by-latlng'
+const URL_ATTRACTIONS =
+    'https://travel-advisor.p.rapidapi.com/attractions/list-by-latlng'
+const URL_RESTAURANTS =
+    'https://travel-advisor.p.rapidapi.com/restaurants/list-by-latlng'
+const URL_HOTELS = 'https://travel-advisor.p.rapidapi.com/hotels/list-by-latlng'
 
 export const getPlacesData = async (center, radius) => {
     try {
         const {
             data: { data },
-        } = await axios.get(URL, {
+        } = await axios.get(URL_RESTAURANTS, {
             params: {
                 longitude: center.lng,
                 latitude: center.lat,
