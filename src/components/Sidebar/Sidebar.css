@@ -1,0 +1,81 @@
+.wrapper {
+    padding: 40px;
+    position: fixed;
+    width: 350px;
+    height: 100vh;
+    z-index: 1000;
+    background-color: #f6f5ef;
+    border-right: 2px solid black;
+    transform: translateX(-100%);
+    transition: all 0.4s;
+}
+.wrapper.active {
+    transform: translateX(20%);
+}
+.findbar p {
+    font-size: 20px;
+    font-weight: 800;
+}
+.inputmenu p {
+    display: inline;
+    margin-left: 10px;
+    font-size: 16px;
+}
+.inputmenu {
+    display: flex;
+    flex-direction: row;
+}
+.sideBarInput {
+    font-size: 14px;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    -moz-appearance: textfield;
+}
+.sideBarInput::-webkit-outer-spin-button,
+.sideBarInput::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.btnshow {
+    position: fixed;
+    top: 85%;
+    background: #5e7bc7;
+    width: 350px;
+    height: 60px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    left: auto;
+}
+.sidebarhide {
+    position: fixed;
+    width: 20px;
+    height: 60px;
+    border: 2px solid black;
+    cursor: pointer;
+    background-color: #f6f5ef;
+    top: 40%;
+    left: 100%;
+    border-left: none;
+}
+.sidebarhide img {
+    transform: rotate(90deg);
+    width: 20px;
+    padding-top: 15px;
+    height: 20px;
+}
+.radiocheck {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+}
+.radiocheck input {
+    width: 30px;
+    height: 30px;
+}
+.list {
+    width: 400px;
+    max-height: 500px;
+    overflow: scroll;
+}

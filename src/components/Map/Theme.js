@@ -1,96 +1,74 @@
-export const defaultTheme=
-[
+export const defaultTheme = [
     {
-        "featureType": "all",
-        "elementType": "all",
-        "stylers": [
+        featureType: 'all',
+        elementType: 'labels.text',
+        stylers: [
             {
-                "invert_lightness": true
+                color: '#878787',
             },
+        ],
+    },
+    {
+        featureType: 'all',
+        elementType: 'labels.text.stroke',
+        stylers: [
             {
-                "saturation": 10
+                visibility: 'off',
             },
+        ],
+    },
+    {
+        featureType: 'landscape',
+        elementType: 'all',
+        stylers: [
             {
-                "lightness": 30
+                color: '#f9f5ed',
             },
+        ],
+    },
+    {
+        featureType: 'poi',
+        elementType: 'labels.icon',
+        stylers: [
             {
-                "gamma": 0.5
+                visibility: 'off',
             },
-            {
-                "hue": "#435158"
-            }
-        ]
+        ],
     },
     {
-        "featureType": "poi",
-        "elementType": "geometry.fill",
-        "stylers": [
+        featureType: 'road.highway',
+        elementType: 'all',
+        stylers: [
             {
-                "visibility": "off"
-            }
-        ]
+                color: '#f5f5f5',
+            },
+        ],
     },
     {
-        "featureType": "poi",
-        "elementType": "geometry.stroke",
-        "stylers": [
+        featureType: 'road.highway',
+        elementType: 'geometry.stroke',
+        stylers: [
             {
-                "visibility": "off"
-            }
-        ]
+                color: '#c9c9c9',
+            },
+        ],
     },
     {
-        "featureType": "poi",
-        "elementType": "labels.text.fill",
-        "stylers": [
+        featureType: 'transit',
+        elementType: 'labels.icon',
+        stylers: [
             {
-                "visibility": "off"
-            }
-        ]
+                visibility: 'off',
+            },
+        ],
     },
     {
-        "featureType": "poi",
-        "elementType": "labels.text.stroke",
-        "stylers": [
+        featureType: 'water',
+        elementType: 'all',
+        stylers: [
             {
-                "visibility": "off"
-            }
-        ]
+                color: '#aee0f4',
+            },
+        ],
     },
-    {
-        "featureType": "poi",
-        "elementType": "labels.icon",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "labels.icon",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "labels.icon",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "transit.station.bus",
-        "elementType": "labels.icon",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    }
 ]

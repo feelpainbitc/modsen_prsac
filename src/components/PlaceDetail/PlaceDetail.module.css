@@ -1,40 +1,51 @@
-.placeDetailContainer{
-    z-index: 100;
+.placeDetailContainer {
     display: flex;
-    flex-direction: row;
-    overflow-x: hidden;
-    border: 1px solid wheat;
     max-width: 350px;
     max-height: 150px;
+    flex-wrap: nowrap;
+    border: 1px solid rgb(87, 87, 87);
+    flex-wrap: nowrap;
+    overflow-y: hidden;
     margin-bottom: 10px;
-    margin-left: 10px;
-    overflow: hidden;
-    border-radius: 10px;;
+    align-items: center;
 }
-.placeDetailImg{
- max-width: 150px;
- max-height: 150px;
- overflow: hidden;
+.placeDetailImg {
+    max-height: 150px;
+    max-width: 200px;
+    overflow-y: hidden;
 }
-.placeDetailInfo{
-    max-width: 350px;
+.placeDetailImg img {
+    max-height: 150px;
+    max-width: 200px;
+}
+.placeDetailInfo {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    width: 200px;
+    overflow-y: hidden;
 }
-.placeDetailHeader{
+.placeDetailHeader {
     display: flex;
-    max-width: 350px;
-    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: hidden;
+    margin-bottom: -30px;
+}
+.placeDescription {
+    overflow-y: scroll;
+    hyphens: auto;
+    max-width: 180px;
+    max-height: 80px;
+}
+.placeDetailBtns {
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: row-reverse;
     align-items: center;
     justify-content: space-between;
-    font-size: 20px;
-    font-weight: 600;
-    max-height: 90px;
+    top: 90%;
 }
-.placeDetailBtns{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+.placeDetailBtns button {
+    font-size: 10px;
+    width: 60px;
+    height: 30px;
 }
