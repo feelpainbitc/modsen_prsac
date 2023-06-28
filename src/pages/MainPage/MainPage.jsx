@@ -67,16 +67,16 @@ export const MainPage = (props) => {
     const [menuActive, setMenuActive] = useState(false)
     const [favoriteActive, setFavoriteActive] = useState(false)
 
-    // useEffect(() => {
-    //     console.log(center)
-    //     console.log(showPlace)
-    //     getPlacesData(center, radius).then((data) => {
-    //         console.log(data)
-    //         if (showPlace == true) {
-    //             setPlaces(data)
-    //         }
-    //     })
-    // }, [showPlace])
+    useEffect(() => {
+        console.log(center)
+        console.log(showPlace)
+        getPlacesData(center, radius).then((data) => {
+            console.log(data)
+            if (showPlace == true) {
+                setPlaces(data)
+            }
+        })
+    }, [showPlace])
 
     const onPlaceSelect = useCallback((coordinates) => {
         setCenter(coordinates)
@@ -84,7 +84,7 @@ export const MainPage = (props) => {
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
-        googleMapsApiKey: API_KEY,
+        googleMapsApiKey: 'AIzaSyDaY4S9bDqrvZZUGwJvp0dnPE4IHNElF9M',
         libraries,
     })
 
