@@ -41,7 +41,7 @@ export const LoginPage = (props) => {
                         className={s.user}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Username"
+                        placeholder="E-mail"
                     />
                     <input
                         type="password"
@@ -53,6 +53,10 @@ export const LoginPage = (props) => {
                     <button onClick={() => handleLogin(email, pass)}>
                         &#xf0da;
                     </button>
+                    <p>
+                        Нет аккаунта?{' '}
+                        <a href="/registration">Зарегистрируйся!</a>
+                    </p>
                 </div>
             </div>
         </div>

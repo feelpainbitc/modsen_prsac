@@ -5,7 +5,7 @@
     font-family: 'Open Sans', 'sans-serif', 'FontAwesome';
 }
 body {
-    background: rgb(52, 56, 61);
+    background: rgb(93, 93, 93);
 }
 h1 {
     color: rgb(255, 255, 255);
@@ -14,6 +14,7 @@ h1 {
     text-align: center;
     font-size: 40px;
 }
+
 .wrapper {
     position: absolute;
     width: 320px;
@@ -34,7 +35,7 @@ h1 {
     display: block;
     position: relative;
     height: 2px;
-    background: rgb(52, 56, 61);
+    background: rgb(0, 0, 0);
     content: '';
     top: 44px;
     margin-left: 20px;
@@ -51,7 +52,7 @@ h1 {
 .signin input[type='email'],
 .signin input[type='password'],
 #signin button {
-    background: rgb(28, 30, 33);
+    background: rgb(255, 255, 255);
     box-shadow: inset -100px -100px 0 rgb(28, 30, 33); /*Prevent yellow autofill color*/
     color: rgb(52, 56, 61);
 }
@@ -90,18 +91,26 @@ h1 {
     text-align: center;
 }
 .signin button:hover {
-    color: rgb(0, 126, 165);
+    color: rgb(151, 0, 165);
     text-shadow: 0 0 10px rgb(0, 126, 165);
     cursor: pointer;
 }
 .signin p {
-    color: rgb(79, 85, 97);
+    color: rgb(146, 146, 146);
     padding: 0 20px;
     font-weight: 700;
     font-size: 12px;
     margin: 5px 0 0 0;
 }
 .signin p > a {
-    color: rgb(111, 119, 135);
+    color: rgb(255, 255, 255);
     text-decoration: none;
+}
+.signin a {
+    margin-left: 7px;
+}
+.signin a:hover {
+    color: rgb(186, 119, 217);
+    font-size: 14px;
+    text-decoration: underline;
 }

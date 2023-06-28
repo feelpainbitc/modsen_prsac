@@ -55,6 +55,10 @@ export const RegisterPage = (props) => {
                     <button onClick={() => handleRegister(email, pass)}>
                         &#xf0da;
                     </button>
+                    <p>
+                        Уже есть аккаунт?
+                        <a href="/login">Войти!</a>
+                    </p>
                 </div>
             </div>
         </div>

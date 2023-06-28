@@ -11,6 +11,7 @@ import {
 import MyPosition from '../../assets/user1.png'
 import { Modal } from '../Modal/Modal'
 import { fetchDirection } from '../utils/fetchdir'
+import { getMarkerIcon } from '../../helpers/iconFilter'
 
 import s from './Map.module.css'
 import { defaultTheme } from './Theme'
@@ -114,6 +115,7 @@ export const Map = ({ center, radius, places, showPlace }) => {
                                 lng: Number(place.longitude),
                             }}
                             title={place.name}
+                            icon={getMarkerIcon(place)}
                             key={i}
                             onClick={() => {
                                 fetchDirection(place, center, setDirections)

@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { redirect } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useJsApiLoader } from '@react-google-maps/api'
+import { useNavigate } from 'react-router-dom'
 
 import { removeUser } from '../../store/slices/userSlice'
 
@@ -58,6 +59,7 @@ const placesList = [
 
 export const MainPage = (props) => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [showPlace, setShowPlace] = useState(false)
     const [radius, setRadius] = useState(null)
     const [center, setCenter] = useState(defaultValueCenter)
@@ -82,7 +84,7 @@ export const MainPage = (props) => {
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
-        googleMapsApiKey: 'AIzaSyDaY4S9bDqrvZZUGwJvp0dnPE4IHNElF9M',
+        googleMapsApiKey: API_KEY,
         libraries,
     })
 
@@ -182,6 +184,6 @@ export const MainPage = (props) => {
             />
         </div>
     ) : (
-        redirect('/login')
+        navigate('/login')
     )
 }

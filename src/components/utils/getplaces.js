@@ -9,7 +9,7 @@ export const getPlacesData = async (center, radius) => {
     try {
         const {
             data: { data },
-        } = await axios.get(URL_RESTAURANTS, {
+        } = await axios.get(URL_ATTRACTIONS, {
             params: {
                 longitude: center.lng,
                 latitude: center.lat,
