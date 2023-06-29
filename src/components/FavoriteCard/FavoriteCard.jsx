@@ -2,7 +2,6 @@ import React from 'react'
 
 import zaglywka from '../../assets/zagluwka.png'
 import favorite from '../../assets/favourites.png'
-import marwryt from '../../assets/marwryt2.png'
 
 import s from './FavoriteCard.module.css'
 

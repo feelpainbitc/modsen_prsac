@@ -1,7 +1,7 @@
 import React from 'react'
 
 import zaglywka from '../../assets/zagluwka.png'
-import { fetchDirection } from '../utils/fetchdir'
+import { fetchDirection } from '../../utils/fetchdir'
 
 import s from './PlaceDetail.module.css'
 

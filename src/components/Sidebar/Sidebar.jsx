@@ -17,7 +17,6 @@ export const Sidebar = ({
     places,
     activePlaces,
     center,
-    setDirections,
 }) => {
     return (
         <div className={active ? 'wrapper active' : 'wrapper'}>
@@ -59,11 +58,7 @@ export const Sidebar = ({
                 <div className="list">
                     Найденно:
                     {places?.map((place, i) => (
-                        <PlaceDetail
-                            place={place}
-                            center={center}
-                            setDirections={setDirections}
-                        />
+                        <PlaceDetail place={place} center={center} />
                     ))}
                 </div>
                 <button className="btnshow" onClick={() => showPlace(true)}>

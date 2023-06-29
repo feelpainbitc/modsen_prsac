@@ -14,6 +14,7 @@ export const fetchDirection = (place, center, setDirections) => {
         },
         (result, status) => {
             if (status === 'OK' && result) {
+                console.log(result)
                 setDirections(result)
             }
         }
