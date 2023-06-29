@@ -1,0 +1,16 @@
+.wrapperDirResult {
+    margin-top: 40px;
+    position: absolute;
+    width: 300px;
+    height: 70px;
+    z-index: 100000;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    transform: translateX(160%);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid black;
+    border-radius: 8px;
+    font-size: 18px;
+}

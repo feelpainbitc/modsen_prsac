@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import usePlacesAutocomplete, {
     getGeocode,
     getLatLng,
 } from 'use-places-autocomplete'
-import useOnclickOutside from 'react-cool-onclickoutside'
 
 import s from './Autocomplete.module.css'
 
@@ -20,10 +19,7 @@ export const Autocomplete = ({ isLoaded, onSelect }) => {
         initOnMount: false,
         debounce: 300,
     })
-
-    const ref = useOnclickOutside(() => {
-        clearSuggestions()
-    })
+    const ref = useRef(null)
     const handleInputFirst = (e) => {
         setValue(e.target.value)
     }
@@ -62,8 +58,25 @@ export const Autocomplete = ({ isLoaded, onSelect }) => {
         }
     }, [isLoaded, init])
 
+    const handleClickOutSide = (event) => {
+        if (ref.current && !ref.current.contains(event.target)) {
+            clearSuggestions()
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener('click', handleClickOutSide, true)
+        return () => {
+            document.removeEventListener('click', handleClickOutSide, true)
+        }
+    })
+
     return (
-        <div className={s.root} ref={ref}>
+        <div
+            className={s.root}
+            ref={ref}
+            onClick={(e) => handleClickOutSide(e)}
+        >
             <input
                 type="text"
                 className={s.findbar}
