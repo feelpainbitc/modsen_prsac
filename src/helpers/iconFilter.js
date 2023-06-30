@@ -38,11 +38,24 @@ const typeToIcon = {
     Concerts: bars,
     'Karaoke Bars': bars,
     'Bowling Alleys': attraction,
+    'Taxis & Shuttles': car,
+    'Movie Theaters': other,
+    'Sports Complexes': sport,
+    'Hair & Nail Salons': shop,
+    Casinos: bars,
+    Theaters: culture,
+    Parks: nature,
+    'Science Museums': culture,
+    'Cooking Classes': attraction,
+    'Lessons & Workshops': attraction,
+    'Civic Centers': attraction,
 }
 
 export const getMarkerIcon = (place) => {
     if (place.subtype) {
         return typeToIcon[place.subtype[0].name] ?? defaulticon
+    } else if (place.cuisine) {
+        return food || coffee
     } else {
         return defaulticon
     }

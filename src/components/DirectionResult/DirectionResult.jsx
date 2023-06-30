@@ -2,11 +2,16 @@ import React from 'react'
 
 import './DirecttionResult.css'
 
-export const DirectionResult = ({ result }) => {
+export const DirectionResult = ({ info, setDirections }) => {
     return (
         <div className="wrapperDirResult">
-            <p>Время:12 мин</p>
-            <p>Дистанция:2.5 км</p>
+            <button className="btn" onClick={() => setDirections(null)}>
+                x
+            </button>
+            <div className="info">
+                <p>Время:{info.routes[0].legs[0].duration.text}</p>
+                <p>Дистанция:{info.routes[0].legs[0].distance.text}</p>
+            </div>
         </div>
     )
 }
