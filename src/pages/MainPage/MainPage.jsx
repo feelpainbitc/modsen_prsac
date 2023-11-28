@@ -10,7 +10,8 @@ import ClipLoader from 'react-spinners/ClipLoader'
 import { removeUser } from '../../store/slices/userSlice'
 
 import { Map } from '../../components/Map/Map'
-import { getPlacesData } from '../../utils/getplaces.js'
+import { getPlacesData } from '../../utils/getplacesattractions.js'
+import { getPlacesDataRest } from '../../utils/getplacesrestaurants'
 import { PlaceDetail } from '../../components/PlaceDetail/PlaceDetail.jsx'
 import { Autocomplete } from '../../components/Autocomplete/Autocomplete.jsx'
 import { useAuth } from '../../hooks/use-auth.js'
@@ -33,23 +34,34 @@ export const MainPage = (props) => {
     const [radius, setRadius] = useState(null)
     const [center, setCenter] = useState(defaultValueCenter)
     const [places, setPlaces] = useState([])
+    const [placesRest, setPlacesRest] = useState([])
     const [myPos, setMyPos] = useState(false)
     const [menuActive, setMenuActive] = useState(false)
     const [favoriteActive, setFavoriteActive] = useState(false)
     const { isAuth } = useAuth()
-    const [dirActive, setDirActive] = useState(false)
+    const [directions, setDirections] = useState(null)
     const [loading, setLoading] = useState(false)
 
-    // useEffect(() => {
-    //     console.log(center)
-    //     console.log(showPlace)
-    //     getPlacesData(center, radius).then((data) => {
-    //         console.log(data)
-    //         if (showPlace == true) {
-    //             setPlaces(data)
-    //         }
-    //     })
-    // }, [showPlace])
+    useEffect(() => {
+        console.log(center)
+        console.log(showPlace)
+        getPlacesData(center, radius).then((data) => {
+            console.log(data)
+            if (showPlace == true) {
+                setPlaces(data)
+            }
+        })
+    }, [showPlace])
+    useEffect(() => {
+        console.log(center)
+        console.log(showPlace)
+        getPlacesDataRest(center, radius).then((data) => {
+            console.log(data)
+            if (showPlace == true) {
+                setPlacesRest(data)
+            }
+        })
+    }, [showPlace])
 
     const onPlaceSelect = useCallback((coordinates) => {
         setCenter(coordinates)
@@ -73,8 +85,20 @@ export const MainPage = (props) => {
         )
     }, [myPos])
 
+    const showDirections = () => {
+        setDirections()
+    }
+    const removeDirections = () => {
+        setDirections(null)
+    }
+
     return isAuth ? (
-        <Context.Provider value={{}}>
+        <Context.Provider
+            value={{
+                showDirections,
+                removeDirections,
+            }}
+        >
             <div className={s.container}>
                 <div className={s.mainMenu}>
                     <img src={Logo} alt="Logo" className={s.logo} />
@@ -93,15 +117,17 @@ export const MainPage = (props) => {
                         onClick={() => dispatch(removeUser())}
                     ></button>
                 </div>
-
                 <div className={s.mapContainer}>
                     {isLoaded ? (
                         <Map
                             className={s.map}
                             center={center}
                             places={places}
+                            placesRest={placesRest}
                             showPlace={showPlace}
                             radius={radius}
+                            directions={directions}
+                            setDirections={setDirections}
                         />
                     ) : (
                         <h2>Loading...</h2>
@@ -127,7 +153,12 @@ export const MainPage = (props) => {
                     active={favoriteActive}
                     setActive={setFavoriteActive}
                 />
-                {/* <DirectionResult /> */}
+                {directions !== null && (
+                    <DirectionResult
+                        info={directions}
+                        setDirections={setDirections}
+                    />
+                )}
                 <ClipLoader
                     color="#000000"
                     loading={loading}

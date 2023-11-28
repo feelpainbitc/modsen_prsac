@@ -21,9 +21,16 @@ const containerStyle = {
     height: '100%',
 }
 
-export const Map = ({ center, radius, places, showPlace }) => {
+export const Map = ({
+    center,
+    radius,
+    places,
+    showPlace,
+    placesRest,
+    directions,
+    setDirections,
+}) => {
     const mapRef = useRef(undefined)
-    const [directions, setDirections] = useState()
 
     const onLoad = useCallback(function callback(map) {
         mapRef.current = map
@@ -55,6 +62,22 @@ export const Map = ({ center, radius, places, showPlace }) => {
                 {showPlace != false &&
                     radius != undefined &&
                     places.map((place, i) => (
+                        <MarkerF
+                            position={{
+                                lat: Number(place.latitude),
+                                lng: Number(place.longitude),
+                            }}
+                            title={place.name}
+                            icon={getMarkerIcon(place)}
+                            key={i}
+                            onClick={() => {
+                                fetchDirection(place, center, setDirections)
+                            }}
+                        />
+                    ))}
+                {showPlace != false &&
+                    radius != undefined &&
+                    placesRest.map((place, i) => (
                         <MarkerF
                             position={{
                                 lat: Number(place.latitude),

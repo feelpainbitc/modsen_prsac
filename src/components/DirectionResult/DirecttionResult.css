@@ -7,10 +7,28 @@
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     transform: translateX(160%);
-    display: flex;
     align-items: center;
     justify-content: space-around;
     border: 1px solid black;
     border-radius: 8px;
     font-size: 18px;
+}
+.btn {
+    color: black;
+    background-color: white;
+    position: fixed;
+    left: 93%;
+    border: none;
+    text-align: center;
+    font-size: 30px;
+    display: flex;
+    padding-bottom: 7px;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+}
+.info {
+    display: flex;
+    flex-direction: row;
 }
