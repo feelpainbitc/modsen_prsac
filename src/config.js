@@ -11,7 +11,7 @@ export const circleOptions = {
     strokeWeight: 2,
     clicable: false,
     draggable: false,
-    visible: true,
+    visible: false,
     zIndex: 10,
     fillOpacity: 0.08,
     strokeColor: 'rgb(119, 118, 10)',
@@ -37,3 +37,4 @@ export const containerStyle = {
     width: '100%',
     height: '100%',
 }
+export const defaultRadius= 0.001

@@ -1,11 +1,15 @@
 import React from 'react'
 
+import { clearDirection } from '../../utils/fetchdir'
+
 import './DirecttionResult.css'
 
-export const DirectionResult = ({ info, setDirections }) => {
+export const DirectionResult = ({ info, setDirections,directionsRendererRef,clearDirections,onClose }) => {
+    
+
     return (
         <div className="wrapperDirResult">
-            <button className="btn" onClick={() => setDirections(null)}>
+            <button className="btn" onClick={()=>setDirections(null)}>
                 x
             </button>
             <div className="info">

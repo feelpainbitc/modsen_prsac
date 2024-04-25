@@ -11,6 +11,7 @@ export const Sidebar = ({
     setActive,
     isLoaded,
     onSelect,
+    setShowPlace,
     showPlace,
     radius,
     setRadius,
@@ -45,8 +46,12 @@ export const Sidebar = ({
                         type="number"
                         className="sideBarInput"
                         value={radius}
-                        onChange={(e) => setRadius(e.target.value)}
-                    />
+                        onClick={()=>setRadius(0.001)}
+                        onChange={(e) =>{
+                            const value = e.target.value.trim(); // Убираем пробелы в начале и конце
+                            const valRadius=value;
+                            valRadius==='' ? setRadius(0) : setRadius(parseFloat(valRadius))
+                        } }/>
                     <p>км</p>
                 </div>
                 <button
@@ -61,9 +66,12 @@ export const Sidebar = ({
                         <PlaceDetail place={place} center={center} />
                     ))}
                 </div>
-                <button className="btnshow" onClick={() => showPlace(true)}>
+                <div className="btngroup">
+                <button className="btnshow" onClick={() => {setShowPlace(true); console.log(showPlace)}}>
                     <img src={lypa} alt="l" />
                 </button>
+                <button className="btnshow">Очистить</button>
+                </div>
             </div>
         </div>
     )

@@ -37,10 +37,9 @@
     -webkit-appearance: none;
 }
 .btnshow {
-    position: fixed;
     top: 85%;
     background: #5e7bc7;
-    width: 350px;
+    width: 100px;
     height: 60px;
     border-radius: 10px;
     border: none;
@@ -77,5 +76,15 @@
 .list {
     width: 400px;
     max-height: 500px;
+    margin-top: 10px;
+    border: 1px solid black;
     overflow: scroll;
+    padding-left: 10px;
+}
+.btngroup{
+    top:3%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

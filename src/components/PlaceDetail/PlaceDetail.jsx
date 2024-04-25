@@ -23,9 +23,6 @@ export const PlaceDetail = ({ place, center, setDirections }) => {
                     <h3>{place.name}</h3>
                     <h4>{place.rating}</h4>
                 </div>
-                <div className={s.placeDescription}>
-                    <h5>{place.description}</h5>
-                </div>
                 <div className={s.placeDetailBtns}>
                     <button
                         onClick={() => {

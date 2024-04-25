@@ -1,5 +1,5 @@
 /*global google*/
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect,useRef } from 'react'
 import { useState } from 'react'
 import { redirect } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
@@ -18,8 +18,9 @@ import { useAuth } from '../../hooks/use-auth.js'
 import { Sidebar } from '../../components/Sidebar/Sidebar.jsx'
 import { FavoriteBar } from '../../components/FavoriteBar/FavoriteBar.jsx'
 import { DirectionResult } from '../../components/DirectionResult/DirectionResult'
+import { PlaceDescription } from '../../components/PlaceDescription/PlaceDescription.jsx'
 import { Context } from '../../context'
-import { defaultValueCenter, libraries } from '../../config'
+import { defaultValueCenter, libraries, defaultRadius } from '../../config'
 
 import Logo from '../../assets/logo.png'
 
@@ -31,37 +32,66 @@ export const MainPage = (props) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [showPlace, setShowPlace] = useState(false)
-    const [radius, setRadius] = useState(null)
+    const [radius, setRadius] = useState(undefined)
     const [center, setCenter] = useState(defaultValueCenter)
     const [places, setPlaces] = useState([])
+    const [isFirstCircle, setIsFirstCircle] = useState(true);
     const [placesRest, setPlacesRest] = useState([])
     const [myPos, setMyPos] = useState(false)
     const [menuActive, setMenuActive] = useState(false)
     const [favoriteActive, setFavoriteActive] = useState(false)
     const { isAuth } = useAuth()
-    const [directions, setDirections] = useState(null)
+
     const [loading, setLoading] = useState(false)
+    const directionsRendererRef = useRef(null);
+
+
+
 
     useEffect(() => {
+        const filteredPlaces = (data) => {
+            const uniqueLocations = [];
+            
+            return data.filter(place => {
+                // Проверяем, что место имеет фотографию и URL для маленького изображения
+                if (place.photo && place.photo.images && place.photo.images.small && place.photo.images.small.url) {
+                    // Проверяем уникальность location_id
+                    if (!uniqueLocations.includes(place.location_id)) {
+                        uniqueLocations.push(place.location_id);
+                        return true;
+                    }
+                }
+                
+                return false;
+            });
+        };
         console.log(center)
         console.log(showPlace)
+        if(showPlace){
+            
         getPlacesData(center, radius).then((data) => {
             console.log(data)
             if (showPlace == true) {
-                setPlaces(data)
+                const filteredData = filteredPlaces(data);
+                setPlaces(filteredData)
+                console.log(filteredData)
             }
         })
+    }
     }, [showPlace])
-    useEffect(() => {
-        console.log(center)
-        console.log(showPlace)
-        getPlacesDataRest(center, radius).then((data) => {
-            console.log(data)
-            if (showPlace == true) {
-                setPlacesRest(data)
-            }
-        })
-    }, [showPlace])
+
+   
+
+    // useEffect(() => {
+    //     console.log(center)
+    //     console.log(showPlace)
+    //     getPlacesDataRest(center, radius).then((data) => {
+    //         console.log(data)
+    //         if (showPlace == true) {
+    //             setPlacesRest(data)
+    //         }
+    //     })
+    // }, [showPlace])
 
     const onPlaceSelect = useCallback((coordinates) => {
         setCenter(coordinates)
@@ -85,18 +115,14 @@ export const MainPage = (props) => {
         )
     }, [myPos])
 
-    const showDirections = () => {
-        setDirections()
-    }
-    const removeDirections = () => {
-        setDirections(null)
-    }
 
+
+
+    console.log('Авторизован:'+isAuth)
     return isAuth ? (
         <Context.Provider
             value={{
-                showDirections,
-                removeDirections,
+                
             }}
         >
             <div className={s.container}>
@@ -121,13 +147,16 @@ export const MainPage = (props) => {
                     {isLoaded ? (
                         <Map
                             className={s.map}
-                            center={center}
+                            center={center} 
                             places={places}
                             placesRest={placesRest}
                             showPlace={showPlace}
                             radius={radius}
-                            directions={directions}
-                            setDirections={setDirections}
+                            directionsRendererRef={directionsRendererRef}
+                            setRadius={setRadius}
+                            setIsFirstCircle={setIsFirstCircle}
+                            isFirstCircle={isFirstCircle}
+                            
                         />
                     ) : (
                         <h2>Loading...</h2>
@@ -142,7 +171,8 @@ export const MainPage = (props) => {
                     setActive={setMenuActive}
                     isLoaded={isLoaded}
                     onSelect={onPlaceSelect}
-                    showPlace={setShowPlace}
+                    setShowPlace={setShowPlace}
+                    showPlace={showPlace}
                     activePlaces={showPlace}
                     radius={radius}
                     setRadius={setRadius}
@@ -153,12 +183,14 @@ export const MainPage = (props) => {
                     active={favoriteActive}
                     setActive={setFavoriteActive}
                 />
-                {directions !== null && (
+                {/* {directions !== null && (
                     <DirectionResult
                         info={directions}
                         setDirections={setDirections}
+                        directionsRendererRef={directionsRendererRef}
+                        clearDirections={clearDirections}
                     />
-                )}
+                )} */}
                 <ClipLoader
                     color="#000000"
                     loading={loading}

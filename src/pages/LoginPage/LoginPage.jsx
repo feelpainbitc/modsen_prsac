@@ -24,7 +24,8 @@ export const LoginPage = (props) => {
                         email: user.email,
                         id: user.uid,
                         token: user.accessToken,
-                    })
+                    }),
+                    console.log(user)
                 )
                 navigate('/')
             })

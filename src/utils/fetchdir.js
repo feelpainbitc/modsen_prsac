@@ -1,5 +1,5 @@
 /*global google*/
-export const fetchDirection = (place, center, setDirections) => {
+export const fetchDirection = (place, center, setDirections,directionsRendererRef) => {
     if (!place) return
 
     const service = new google.maps.DirectionsService()
@@ -16,7 +16,20 @@ export const fetchDirection = (place, center, setDirections) => {
             if (status === 'OK' && result) {
                 console.log(result)
                 setDirections(result)
+
+                if (!directionsRendererRef.current) {
+                    directionsRendererRef.current = new google.maps.DirectionsRenderer();
+                }
+
+                // Установка маршрута на карту
+                directionsRendererRef.current.setDirections(result);
             }
         }
     )
-}
+};
+export const clearDirection = (setDirections,directionsRendererRef) => {
+    if (directionsRendererRef.current) {
+        // Очистка маршрута с карты
+        directionsRendererRef.current.setDirections(null);
+    }
+};
