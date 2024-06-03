@@ -23,16 +23,15 @@ export const PlaceDetail = ({ place, center, setDirections }) => {
                     <h3>{place.name}</h3>
                     <h4>{place.rating}</h4>
                 </div>
-                <div className={s.placeDetailBtns}>
-                    <button
+              <div className={s.btns}>
+                    <button className={s.btn}
                         onClick={() => {
                             fetchDirection(place, center, setDirections)
                         }}
                     >
                         Маршрут
                     </button>
-                    <button>В избранное</button>
-                </div>
+                    </div>
             </div>
         </div>
     )

@@ -10,7 +10,7 @@ import {
     // DrawingManager,
 } from '@react-google-maps/api'
 
-import { Context } from '../../context'
+// import { Context } from '../../context'
 import { PlaceDescription } from '../PlaceDescription/PlaceDescription'
 import MyPosition from '../../assets/user1.png'
 import { DirectionResult } from '../DirectionResult/DirectionResult'

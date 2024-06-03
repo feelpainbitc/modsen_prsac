@@ -4,10 +4,6 @@ import { useNavigate } from 'react-router-dom'
 
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 
-import { useDispatch } from 'react-redux'
-
-import { setUser } from '../../store/slices/userSlice'
-
 import s from '../LoginPage/LoginPage.module.css'
 
 export const RegisterPage = (props) => {
@@ -15,19 +11,12 @@ export const RegisterPage = (props) => {
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
 
-    const dispatch = useDispatch()
 
     const handleRegister = (email, password) => {
         const auth = getAuth()
         createUserWithEmailAndPassword(auth, email, password)
             .then(({ user }) => {
-                dispatch(
-                    setUser({
-                        email: user.email,
-                        id: user.uid,
-                        token: user.accessToken,
-                    })
-                )
+                console.log(user);
                 navigate('/')
             })
             .catch(() => alert('Пользователь с таким e-mail уже существует'))

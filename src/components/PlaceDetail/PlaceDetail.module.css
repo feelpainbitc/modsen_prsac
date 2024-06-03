@@ -49,3 +49,13 @@
     width: 60px;
     height: 30px;
 }
+.btns{
+    display: flex;
+    justify-content: center;
+}
+.btn{
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: auto;
+}

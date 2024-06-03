@@ -1,9 +1,11 @@
 import React from 'react'
 
+
 import { Autocomplete } from '../Autocomplete/Autocomplete'
 import lypa from '../../assets/lypa.png'
 import arrow from '../../assets/arrowsidebar.png'
 import './Sidebar.css'
+
 import { PlaceDetail } from '../PlaceDetail/PlaceDetail'
 
 export const Sidebar = ({
@@ -19,6 +21,7 @@ export const Sidebar = ({
     activePlaces,
     center,
 }) => {
+
     return (
         <div className={active ? 'wrapper active' : 'wrapper'}>
             <div className="autocomplete">

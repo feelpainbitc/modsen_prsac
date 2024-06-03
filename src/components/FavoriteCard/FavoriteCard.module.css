@@ -2,15 +2,16 @@
     max-width: 350px;
     max-height: 230px;
     padding: 20px;
+    margin-top: 10px;
     border: 1.5px solid #676767;
     border-radius: 15px;
 }
 .header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     flex-wrap: nowrap;
     margin-bottom: 10px;
+    overflow: hidden;
 }
 .header img {
     max-width: 120px;
@@ -19,26 +20,30 @@
 .header h2 {
     font-size: 16px;
     font-weight: 800;
-    max-width: 160px;
+    width: auto;
+    margin-left: 15px;
     overflow-wrap: break-word;
 }
 .description {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 600;
     color: #373737;
-    max-width: 300px;
-    max-height: 40px;
-    overflow: hidden;
+    width: auto;
+    max-height: auto;
     margin-bottom: 10px;
 }
 button {
     width: 130px;
     height: 40px;
-    font-size: 16px;
+    font-size: 14px;
     border: 0.5px solid #4c4c4c;
     border-radius: 5px;
     color: #fff;
     background-color: #5e7bc7;
     cursor: pointer;
     justify-content: end;
+}
+.buttongroup{
+    display: flex;
+    justify-content: space-between;
 }

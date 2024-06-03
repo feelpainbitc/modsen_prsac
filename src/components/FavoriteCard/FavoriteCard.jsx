@@ -1,29 +1,48 @@
-import React from 'react'
+import React,{useContext} from 'react'
+import { doc, setDoc, updateDoc,serverTimestamp, query, where, getDocs,deleteDoc,collection, addDoc } from 'firebase/firestore';
+import { useAuthState } from 'react-firebase-hooks/auth'; 
 
 import zaglywka from '../../assets/zagluwka.png'
-import favorite from '../../assets/favourites.png'
+import { Context } from '../../index.js'
 
 import s from './FavoriteCard.module.css'
 
-export const FavoriteCard = (props) => {
+export const FavoriteCard = ({key,favourite,takeFavourites}) => {
+    const {auth,db,app}=useContext(Context)
+    const [user]=useAuthState(auth)
+
+    async function deleteDocument(docId) {
+        try {
+            const docRef = doc(db, user.email, favourite.id);
+            await deleteDoc(docRef);
+
+        } catch (error) {
+          console.error('Error deleting document: ', error);
+        }
+        takeFavourites();
+      }
+
     return (
         <div className={s.wrapper}>
             <div className={s.header}>
-                <img src={zaglywka} alt="Will be..." />
-                <h2>Фантаcмагарический музей им. П.М. Машерова</h2>
+            {favourite.photo!==null && favourite.photo!==undefined && favourite.photo!=='' ? (
+                <img src={favourite.photo} alt="Favourite" />
+                ) : (
+                <img src={zaglywka} alt="Placeholder" />
+                )}
+                <h2>{favourite.name}</h2>
             </div>
             <div className={s.description}>
-                Lörem ipsum jere. Intrabel peraktiv pävufåsk läslov pide. Exon
-                prelogi. Någonstansare begöpp. Homoadoption tesände keck såsom
-                köttrymden. Epigen digon fast svennefiera håven postfaktisk.
-                Atomslöjd defåling nigovena tegt i platt-tv. Sextremism
-                julgranssyndrom. Rit-avdrag fyr, jukanat don. Apfälla menskopp
-                eftersom spetät senessa inklusive mepaktiga. Bloggbävning
-                makroligt spepp gönas. Sitskate epir tidsfönster. Hjärtslagslag
-                defånera. Neck röstsamtal möbelhund. Hexaledes ryggsäcksmodellen
-                hikikomori när stenomiheten täpos. Du kan vara drabbad.
+            {favourite.description !== null && favourite.description !== undefined && favourite.description!=='' ? (
+                 favourite.description
+                  ) : (
+                 'Пока нет описания...'
+             )}
             </div>
+            <div className={s.buttongroup}>
             <button>Маршрут</button>
+            <button onClick={deleteDocument}>Удалить из избранного</button>
+            </div>
         </div>
     )
 }

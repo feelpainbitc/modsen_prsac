@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+ @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css');
 
 * {
@@ -114,3 +114,12 @@ h1 {
     font-size: 14px;
     text-decoration: underline;
 }
+.googbtn{
+    font-size: 14px;
+    background: rgb(255, 255, 255);
+    box-shadow: inset -100px -100px 0 rgb(28, 30, 33);
+    color: rgb(146, 146, 146);
+    width: 300px;
+    border-radius: 8px;
+    margin-top: 30px;
+} 
